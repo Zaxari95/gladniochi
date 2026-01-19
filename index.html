@@ -2,21 +2,20 @@
 <html lang="bg">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ресторант Гладни О'чи – Дупница</title>
-  <meta name="description" content="Ресторант Гладни О'чи – първо се храниш с очите. Меню, резервации и поръчки във Viber." />
-
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Ресторант Гладни О'чи – първо се храниш с очите. Меню, резервации, поръчки за вкъщи.">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header class="header">
-  <div class="logo">
-    <img src="assets/logo.png" alt="Ресторант Гладни Очи">
-  </div>
+  <img src="assets/logo.png" class="logo" alt="Гладни Очи">
   <nav>
     <a href="#menu">Меню</a>
-    <a href="#reservation">Резервация</a>
+    <a href="#orders">Поръчки</a>
+    <a href="#reservations">Резервации</a>
+    <a href="#events">Събития</a>
     <a href="#contacts">Контакти</a>
   </nav>
 </header>
@@ -26,39 +25,93 @@
   <p>Първо се храниш с очите</p>
   <div class="hero-buttons">
     <a href="#menu" class="btn">🍽 Меню</a>
-    <a href="#reservation" class="btn secondary">📅 Запази маса</a>
+    <a href="#reservations" class="btn secondary">📅 Запази маса</a>
   </div>
 </section>
 
-<section id="menu" class="menu">
+<section id="about" class="section">
+  <h2>За нас</h2>
+  <p>
+    Ресторант Гладни О'чи разполага със <b>110 места във вътрешната зала</b> и
+    <b>60 места в лятната градина</b> (01.06 – 30.09).
+    Подходящ за рождени дни, фирмени партита, абитуриентски балове и всякакви поводи.
+  </p>
+  <p>
+    🎧 Почти всяка събота с DJ • 🚭 Вътре не се пуши • 🅿️ Свободно паркиране  
+    📍 Индустриална зона – без ограничение за музика
+  </p>
+</section>
+
+<section id="menu" class="section">
   <h2>Меню</h2>
 
-  <select id="mobileCategory" class="mobile-dropdown"></select>
-
-  <div class="tabs" id="tabs"></div>
+  <select id="mobileCategory"></select>
+  <div id="tabs"></div>
   <div id="menuContent"></div>
 </section>
 
-<section id="reservation" class="reservation">
-  <h2>Резервация</h2>
-  <p>Изпратете ни резервация във Viber и ще се свържем с вас възможно най-бързо.</p>
+<section id="orders" class="section">
+  <h2>Поръчки за вкъщи</h2>
+  <p>
+    ⏰ Доставка с наш транспорт: 11:00 – 20:00<br>
+    ⏰ Взимане от място: 11:00 – 21:30<br>
+    ❌ Неделя – не работим
+  </p>
+  <p>
+    📦 Кутии, торбички и прибори – <b>БЕЗПЛАТНО</b><br>
+    🚕 Доставката се заплаща от клиента (работим с таксита)
+  </p>
 
-  <a class="btn viber"
-     href="viber://chat?number=%2B359895213002">
-     Запази маса във Viber
+  <a class="btn viber" href="viber://chat?number=%2B359895213002">
+    🟣 Поръчай във Viber
   </a>
 </section>
 
-<section id="contacts" class="contacts">
+<section id="drive" class="section">
+  <h2>O'чи Drive</h2>
+  <p>
+    Външно гише за бързо обслужване – без влизане в ресторанта.<br>
+    ⏰ Работи от 11:00 до 15:00<br>
+    💳 Плащане в брой и с POS терминал
+  </p>
+</section>
+
+<section id="reservations" class="section">
+  <h2>Резервации</h2>
+  <p>
+    Направете резервация във Viber. Колега ще се свърже с вас възможно най-бързо.
+  </p>
+  <a class="btn viber" href="viber://chat?number=%2B359895213002">
+    📅 Запази маса
+  </a>
+</section>
+
+<section id="events" class="section">
+  <h2>Събития и куверти</h2>
+  <ul>
+    <li>Над 20 човека – препоръчителен куверт</li>
+    <li>Задължителен куверт: 14 февруари, 8 март, Нова година</li>
+    <li>Куверти: Вариант 1 (Свинско) / Вариант 2 (Пилешко)</li>
+    <li>Избор: уиски или ракия</li>
+    <li>Алкохол отвън – 20 € / бутилка</li>
+    <li>Торта отвън – 15 € (с документ)</li>
+    <li>След 02:00 – 75 € / час (петък и събота)</li>
+  </ul>
+</section>
+
+<section id="contacts" class="section">
   <h2>Контакти</h2>
   <p>📞 0895 213 002</p>
   <p>📍 гр. Дупница, ул. Никола Малашевски 9</p>
-  <p>🕒 Пон–Чет: 10:00–23:00 | Пет: 10:00–00:00 | Съб: 10:00–02:00</p>
+  <p>
+    Пон–Чет: 10:00–23:00<br>
+    Пет: 10:00–00:00<br>
+    Съб: 10:00–02:00
+  </p>
 
-  <div class="contact-buttons">
-    <a href="tel:0895213002" class="btn">📞 Позвъни</a>
-    <a href="https://www.google.com/maps?q=Ресторант+Гладни+Очи+Дупница" target="_blank" class="btn secondary">🧭 Навигация</a>
-  </div>
+  <a class="btn" href="https://g.page/r/CRpsCLKmatJcEAE/review" target="_blank">
+    ⭐ Остави отзив
+  </a>
 </section>
 
 <script src="app.js"></script>
