@@ -6,8 +6,9 @@ const menuData = {
     { name: "Гръцка салата", price: 5.99 },
     { name: "Салата Гладни О'чи", price: 9.49 }
   ],
-  "Брускети": [
-    { name: "Брускети с чери домати и моцарела", price: 6.49 }
+  "Стартери": [
+    { name: "Домашни пържени картофи", price: 2.99 },
+    { name: "Панко пилешки филенца", price: 6.99 }
   ],
   "Основни ястия": [
     { name: "Сочни свински скалопини", price: 9.49 },
@@ -16,40 +17,40 @@ const menuData = {
 };
 
 const tabs = document.getElementById("tabs");
-const mobileSelect = document.getElementById("mobileCategory");
-const menuContent = document.getElementById("menuContent");
+const mobile = document.getElementById("mobileCategory");
+const content = document.getElementById("menuContent");
 
-function render(category) {
-  menuContent.innerHTML = "";
-  menuData[category].forEach(item => {
-    const lv = (item.price * RATE).toFixed(2);
-    menuContent.innerHTML += `
+function render(cat) {
+  content.innerHTML = "";
+  menuData[cat].forEach(i => {
+    const lv = (i.price * RATE).toFixed(2);
+    content.innerHTML += `
       <div class="menu-item">
-        <h4>${item.name}</h4>
-        <div class="price">${item.price.toFixed(2)} € / ${lv} лв</div>
+        <b>${i.name}</b>
+        <div class="price">${i.price.toFixed(2)} € / ${lv} лв</div>
       </div>
     `;
   });
 }
 
-Object.keys(menuData).forEach((cat, i) => {
-  const btn = document.createElement("button");
-  btn.textContent = cat;
-  btn.onclick = () => {
-    document.querySelectorAll(".tabs button").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    render(cat);
-    mobileSelect.value = cat;
+Object.keys(menuData).forEach((c, i) => {
+  const b = document.createElement("button");
+  b.textContent = c;
+  if (i === 0) b.classList.add("active");
+  b.onclick = () => {
+    document.querySelectorAll("#tabs button").forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+    render(c);
+    mobile.value = c;
   };
-  if (i === 0) btn.classList.add("active");
-  tabs.appendChild(btn);
+  tabs.appendChild(b);
 
-  const opt = document.createElement("option");
-  opt.value = cat;
-  opt.textContent = cat;
-  mobileSelect.appendChild(opt);
+  const o = document.createElement("option");
+  o.value = c;
+  o.textContent = c;
+  mobile.appendChild(o);
 });
 
-mobileSelect.onchange = e => render(e.target.value);
+mobile.onchange = e => render(e.target.value);
 
 render(Object.keys(menuData)[0]);
