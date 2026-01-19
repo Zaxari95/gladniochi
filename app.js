@@ -2,17 +2,89 @@ const RATE = 1.95583;
 
 const menuData = {
   "Салати": [
-    { name: "Шопска салата", price: 4.99 },
-    { name: "Гръцка салата", price: 5.99 },
-    { name: "Салата Гладни О'чи", price: 9.49 }
+    { name: "Шопска салата", desc: "домати, краставици, пресен лук, чушка, маслини, сирене", price: 4.99 },
+    { name: "Гръцка салата", desc: "домати, краставици, грилована маслина, червен лук, зелена чушка, сирене, зехтин, риган", price: 5.99 },
+    { name: "Цезар с хрупкави скариди", desc: "букет от листни салати, Цезар дресинг, хрупкави скариди, чери домати, крутони и пармезан", price: 8.49 },
+    { name: "Салата Капрезе", desc: "зрял домат, биволска моцарела и песто Дженовезе", price: 7.99 },
+    { name: "Селска салата", desc: "зрели домати с печена чушка, мус от катък и магданоз", price: 7.49 },
+    { name: "Салата Гладни О'чи", desc: "листни салати, медено-горчичен дресинг, малинов винегрет, чери домати, бейби моцарела, прошуто крудо, синьо сирене, зелена ябълка и орех", price: 9.49 },
+    { name: "Салата Спанак с киноа", desc: "шарена киноа, спанак, домати, печен пипер, яйце, сирене и горчичен дресинг", price: 7.49 }
   ],
+
+  "Брускети": [
+    { name: "Брускети с чери домати, моцарела и домашно песто", desc: "", price: 6.49 },
+    { name: "Брускети с Филаделфия и Прошуто Крудо", desc: "", price: 6.49 }
+  ],
+
   "Стартери": [
-    { name: "Домашни пържени картофи", price: 2.99 },
-    { name: "Панко пилешки филенца", price: 6.99 }
+    { name: "Домашни пържени картофи", desc: "", price: 2.99 },
+    { name: "Домашен картофен чипс с трюфелова майонеза", desc: "", price: 3.99 },
+    { name: "Панирани възглавнички от топено сирене с боровинково сладко", desc: "", price: 5.49 },
+    { name: "Панко пилешки филенца с млечен сос", desc: "", price: 6.99 },
+    { name: "Кентъки пилешки крилца с азиатско чили", desc: "", price: 6.99 },
+    { name: "Телешки език в билково масло и чесън", desc: "", price: 8.99 },
+    { name: "Кралски скариди в масло и бяло вино с лимонова коричка и чеснова паста", desc: "", price: 10.99 },
+    { name: "Домашни Трио Разядки", desc: "тирокафтери, катък и кьопоолу с домашно хлебче", price: 7.99 },
+    { name: "Пилешки сърчица в масло", desc: "", price: 7.49 },
+    { name: "Пилешки дробчета по селски", desc: "", price: 6.99 }
   ],
+
+  "Класическа Италианска паста": [
+    { name: "Спагети Карбонара", desc: "прясна паста, панчета, жълтък, пармиджано", price: 7.49 },
+    { name: "Спагети Болонезе", desc: "лук, моркови, мляно месо, доматен сос, пармиджано", price: 6.90 },
+    { name: "Талиатели със скариди и чери домати", desc: "скариди, сметана, чери домати, доматен сос, пармиджано", price: 8.49 },
+    { name: "Пене с пилешко филе и четири сирена", desc: "пилешко филе, сметана, чедър, ементал, синьо сирене и пармиджано", price: 8.49 }
+  ],
+
+  "Ризото": [
+    { name: "Ризото с манатарки и трюфел", desc: "ориз „Карнароли“, манатарки, черен трюфел, вино, лук, магданоз, пармиджано, масло", price: 8.49 },
+    { name: "Ризото с кралски скариди", desc: "ориз „Карнароли“, кралски скариди, доматен сос, пармиджано, масло, лук, чесън", price: 8.99 }
+  ],
+
   "Основни ястия": [
-    { name: "Сочни свински скалопини", price: 9.49 },
-    { name: "Специалитет Гладни О'чи", price: 12.49 }
+    { name: "Сочни свински скалопини", desc: "свинско бон филе с манатарки, картофено пюре, сос братен джус и чипс от пармиджано", price: 9.49 },
+    { name: "Телешки Чийзбургер", desc: "питка бриош, BBQ сос, яйце, чътни от краставичка, карамелизиран лук, чедър, пържени картофки", price: 8.99 },
+    { name: "Пилешки Чийзбургер", desc: "питка бриош, бургер сос, чедър, домат, зелена салата, пържени картофки", price: 7.99 },
+    { name: "Бургер с дърпано свинско и чедър", desc: "питка бриош, BBQ сос, чедър, карамелизиран лук, зелена салата, пържени картофки", price: 8.49 },
+    { name: "Хрупкав Пилешки шницел", desc: "микс свежи салати с цитрусов винегрет, чери домати, пържени картофи", price: 7.99 },
+    { name: "Свинско Джоланче (Су вид)", desc: "сотирани картофки, BBQ сос, хрупкав лук", price: 13.49 },
+    { name: "Пилешко Филе с броколи и сос Четири сирена", desc: "пилешко филе, броколи, чедър, ементал, пармиджано, синьо сирене, сметана", price: 8.49 },
+    { name: "Специалитет Гладни О'чи", desc: "датски котлет на грил, печени картофи със зелен лук и BBQ сос", price: 12.49 },
+    { name: "Хайдушки Калпак", desc: "свинско месо, гъби, лук, зелена люта чушка, кашкавал, свежи подправки", price: 8.49 },
+    { name: "Дърпано свинско месце", desc: "върху канапе от пухкаво картофено пюре и сос братенджус", price: 8.49 },
+    { name: "Сьомга Чимичури", desc: "сьомга филе със сос чимичури върху канапе от бейби спанак", price: 10.49 },
+    { name: "Вегетариански кюфтенца", desc: "кюфтенца от киноа, рукола, чери домати, млечен сос", price: 7.49 },
+    { name: "Пиле терияки", desc: "пилешки късчета върху канапе от ориз, сос терияки и сусам", price: 7.99 },
+    { name: "Пиле Капрезе с домашно песто", desc: "пилешко роле, сушен домат, моцарела, гриловани зеленчуци", price: 8.99 },
+    { name: "Пъстърва от грила", desc: "", price: 6.99 },
+    { name: "Лаврак от грила", desc: "", price: 7.99 }
+  ],
+
+  "Грил/BBQ": [
+    { name: "Порция кюфтета/кебапчета 3бр.", desc: "микс зелени салати, лютеница, пържени картофи", price: 6.10 },
+    { name: "Пилешко филе", desc: "", price: 5.00 },
+    { name: "Свинска вратна пържола", desc: "", price: 6.00 },
+    { name: "Болярска дъска с меса", desc: "пил. филе, св. вратна пържола, 3бр кюфтета, 3бр кебапчета, св. бон филенца, печурки, дом. лютеница, жарени картофи", price: 24.99 }
+  ],
+
+  "Добавки": [
+    { name: "Микс свежи салати с чери домати", desc: "", price: 1.80 },
+    { name: "Домати и краставици", desc: "", price: 1.80 },
+    { name: "Сотирани картофки", desc: "", price: 1.80 },
+    { name: "Домашна Лютеница", desc: "", price: 1.10 }
+  ],
+
+  "Домашни хлебчета": [
+    { name: "Селска питка", desc: "", price: 1.60 },
+    { name: "Домашно хлебче", desc: "чесново или с подправки", price: 1.70 },
+    { name: "Домашна фокача", desc: "", price: 2.60 }
+  ],
+
+  "Десерти": [
+    { name: "Шоколадов мус с маскарпоне", desc: "", price: 3.32 },
+    { name: "Торта Рафаело", desc: "", price: 4.35 },
+    { name: "Шоколадово Суфле с топка сладолед", desc: "", price: 3.84 },
+    { name: "Торта Бискотино", desc: "Цена: по запитване", price: null }
   ]
 };
 
@@ -20,37 +92,68 @@ const tabs = document.getElementById("tabs");
 const mobile = document.getElementById("mobileCategory");
 const content = document.getElementById("menuContent");
 
+function formatPrices(eur) {
+  if (eur === null || eur === undefined) return `<span class="price">Цена: по запитване</span>`;
+  const lv = (eur * RATE).toFixed(2);
+  return `<span class="price">${eur.toFixed(2)} € / ${lv} лв</span>`;
+}
+
+function escapeHtml(s) {
+  return (s || "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
 function render(cat) {
   content.innerHTML = "";
-  menuData[cat].forEach(i => {
-    const lv = (i.price * RATE).toFixed(2);
+  (menuData[cat] || []).forEach(i => {
+    const desc = i.desc ? `<div class="desc">${escapeHtml(i.desc)}</div>` : "";
     content.innerHTML += `
       <div class="menu-item">
-        <b>${i.name}</b>
-        <div class="price">${i.price.toFixed(2)} € / ${lv} лв</div>
+        <div class="row">
+          <b class="name">${escapeHtml(i.name)}</b>
+          ${formatPrices(i.price)}
+        </div>
+        ${desc}
       </div>
     `;
   });
 }
 
-Object.keys(menuData).forEach((c, i) => {
-  const b = document.createElement("button");
-  b.textContent = c;
-  if (i === 0) b.classList.add("active");
-  b.onclick = () => {
-    document.querySelectorAll("#tabs button").forEach(x => x.classList.remove("active"));
-    b.classList.add("active");
-    render(c);
-    mobile.value = c;
-  };
-  tabs.appendChild(b);
+function setActive(btn) {
+  document.querySelectorAll("#tabs button").forEach(x => x.classList.remove("active"));
+  btn.classList.add("active");
+}
 
-  const o = document.createElement("option");
-  o.value = c;
-  o.textContent = c;
-  mobile.appendChild(o);
-});
+function init() {
+  tabs.innerHTML = "";
+  mobile.innerHTML = "";
 
-mobile.onchange = e => render(e.target.value);
+  const cats = Object.keys(menuData);
 
-render(Object.keys(menuData)[0]);
+  cats.forEach((c, idx) => {
+    const b = document.createElement("button");
+    b.textContent = c;
+    if (idx === 0) b.classList.add("active");
+    b.onclick = () => {
+      setActive(b);
+      render(c);
+      mobile.value = c;
+    };
+    tabs.appendChild(b);
+
+    const o = document.createElement("option");
+    o.value = c;
+    o.textContent = c;
+    mobile.appendChild(o);
+  });
+
+  mobile.onchange = e => render(e.target.value);
+
+  if (cats.length) {
+    mobile.value = cats[0];
+    render(cats[0]);
+  }
+}
+
+init();
