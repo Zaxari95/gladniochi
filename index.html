@@ -10,164 +10,204 @@
 <body>
 
 <header class="header">
-  <div class="header-left">
-    <img src="assets/logo.png?v=3" class="logo" alt="Гладни Очи" loading="lazy">
-  </div>
+  <div class="header-inner">
+    <a class="brand" href="#top" aria-label="Начало">
+      <img src="assets/logo.png" class="logo" alt="Гладни О'чи">
+    </a>
 
-  <nav class="nav">
-    <a href="#menu">Меню</a>
-    <a href="#orders">Поръчки</a>
-    <a href="#reservations">Резервации</a>
-    <a href="#gallery">Снимки</a>
-    <a href="#contacts">Контакти</a>
-  </nav>
-
-  <div class="header-actions">
-    <a class="chip" href="tel:+359895213002">📞 Позвъни</a>
-    <a class="chip chip-viber" href="viber://chat?number=%2B359895213002">🟣 Viber</a>
+    <nav class="nav" aria-label="Навигация">
+      <a href="#menu">Меню</a>
+      <a href="#orders">Поръчки</a>
+      <a href="#reservations">Резервации</a>
+      <a href="#gallery">Снимки</a>
+      <a href="#events">Събития</a>
+      <a href="#contacts">Контакти</a>
+    </nav>
   </div>
 </header>
 
-<section class="hero hero-slideshow" aria-label="Снимки от ресторанта">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1>Ресторант Гладни О'чи</h1>
-    <p>Първо се храниш с очите 🍽️✨</p>
+<main id="top">
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Ресторант Гладни О'чи</h1>
+      <p>Първо се храниш с очите 🍽✨</p>
 
-    <div class="hero-buttons">
-      <a href="#menu" class="btn">🍽 Меню</a>
-      <a href="#reservations" class="btn secondary">📅 Запази маса</a>
-      <a href="tel:+359895213002" class="btn secondary">📞 Позвъни сега</a>
-      <a class="btn viber" href="viber://chat?number=%2B359895213002">🟣 Viber</a>
+      <div class="hero-cta">
+        <a href="#menu" class="btn">🍽 Меню</a>
+        <a href="#reservations" class="btn secondary">📅 Запази маса</a>
+        <a class="btn dark" href="tel:+359895213002">📞 Позвъни сега</a>
+        <a class="btn viber" href="viber://chat?number=%2B359895213002">🟣 Viber</a>
+      </div>
+
+      <div class="hero-badges">
+        <span class="badge">🪑 110 места вътре</span>
+        <span class="badge">🌿 60 места градина (01.06–30.09)</span>
+        <span class="badge">🎧 DJ почти всяка събота</span>
+        <span class="badge">🅿️ Безплатно паркиране</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section card">
+    <h2>За нас</h2>
+    <p>
+      Ресторант Гладни О'чи разполага със <b>110 места във вътрешната зала</b> и
+      <b>60 места в лятната градина</b> (01.06 – 30.09).
+      Подходящ за рождени дни, фирмени партита, абитуриентски балове и всякакви поводи.
+    </p>
+    <p class="muted">
+      🚭 Вътре не се пуши • 📍 гр. Дупница, ул. Никола Малашевски 9 • ⏰ Пет/Съб до късно
+    </p>
+  </section>
+
+  <section id="menu" class="section card">
+    <div class="section-head">
+      <h2>Меню</h2>
+      <p class="muted">Избери „Основно меню“ или „Напитки“. Можеш и да търсиш по име.</p>
     </div>
 
-    <div class="hero-badges">
-      <span class="badge">🪑 110 места вътре</span>
-      <span class="badge">🌿 60 места градина (01.06–30.09)</span>
-      <span class="badge">🎧 DJ почти всяка събота</span>
-      <span class="badge">🅿️ Безплатно паркиране</span>
+    <div class="menu-tools">
+      <input id="menuSearch" type="search" placeholder="Търси ястие или напитка…" />
     </div>
-  </div>
-</section>
 
-<section id="about" class="section card">
-  <h2>За нас</h2>
-  <p>
-    Ресторант Гладни О'чи разполага със <b>110 места във вътрешната зала</b> и
-    <b>60 места в лятната градина</b> (01.06 – 30.09).
-    Подходящ за рождени дни, фирмени партита, абитуриентски балове и всякакви поводи.
-  </p>
-  <p class="muted">
-    🎧 Почти всяка събота с DJ • 🚭 Вътре не се пуши • 📍 Индустриална зона – музиката не пречи на никого
-  </p>
-</section>
+    <select id="mobileCategory" aria-label="Избор на раздел"></select>
+    <div id="tabs" class="tabs" aria-label="Табове"></div>
 
-<section id="menu" class="section">
-  <div class="section-head">
-    <h2>Меню</h2>
-    <p class="muted">Цените се показват в € и лв (по курс 1.95583).</p>
-  </div>
+    <div id="menuContent" class="menu-content"></div>
+  </section>
 
-  <select id="mobileCategory"></select>
-  <div id="tabs"></div>
-  <div id="menuContent" class="menu-panel"></div>
-</section>
-
-<section id="orders" class="section card">
-  <h2>Поръчки за вкъщи</h2>
-  <p class="muted">
-    ⏰ Доставка с наш транспорт: 11:00 – 20:00 (възможно е отказ при пълен ресторант/събития)<br>
-    ⏰ Взимане от място: 11:00 – 21:30<br>
-    ❌ Неделя – не работим
-  </p>
-  <p>
-    📦 Кутии, торбички и прибори – <b>БЕЗПЛАТНО</b><br>
-    🚕 Доставката се заплаща от клиента (работим с таксита)
-  </p>
-
-  <div class="btn-row">
-    <a class="btn viber" href="viber://chat?number=%2B359895213002">🟣 Поръчай във Viber</a>
-    <a class="btn secondary" href="tel:+359895213002">📞 Позвъни за поръчка</a>
-  </div>
-</section>
-
-<section id="drive" class="section card">
-  <h2>O'чи Drive</h2>
-  <p>
-    Външно гише за бързо обслужване – без влизане в ресторанта.<br>
-    ⏰ Работи от 11:00 до 15:00 • 💳 Плащане в брой и с POS терминал
-  </p>
-</section>
-
-<section id="reservations" class="section card">
-  <h2>Резервации</h2>
-  <p class="muted">Направете резервация във Viber. Колега ще се свърже с вас възможно най-бързо.</p>
-
-  <div class="btn-row">
-    <a class="btn viber" href="viber://chat?number=%2B359895213002">📅 Запази маса във Viber</a>
-    <a class="btn secondary" href="tel:+359895213002">📞 Резервация по телефон</a>
-  </div>
-</section>
-
-<section id="events" class="section card">
-  <h2>Събития и куверти</h2>
-  <ul>
-    <li>Над 20 човека – препоръчителен куверт</li>
-    <li>Задължителен куверт: 14 февруари, 8 март, Нова година</li>
-    <li>Куверти: Вариант 1 (Свинско) / Вариант 2 (Пилешко)</li>
-    <li>Избор: уиски или ракия</li>
-    <li>Алкохол отвън – 20 € / бутилка</li>
-    <li>Торта отвън – 15 € (с документ)</li>
-    <li>След 02:00 – 75 € / час (петък и събота)</li>
-  </ul>
-</section>
-
-<section id="gallery" class="section">
-  <div class="section-head">
-    <h2>Снимки</h2>
-    <p class="muted">Атмосферата отвътре и градината през лятото 🌿</p>
-  </div>
-
-  <div class="gallery">
-    <a class="g-item" href="assets/photos/gallery-1.jpg" target="_blank" rel="noopener">
-      <img src="assets/photos/gallery-1.jpg" alt="Ресторант Гладни Очи - снимка 1" loading="lazy">
-    </a>
-    <a class="g-item" href="assets/photos/gallery-2.jpg" target="_blank" rel="noopener">
-      <img src="assets/photos/gallery-2.jpg" alt="Ресторант Гладни Очи - снимка 2" loading="lazy">
-    </a>
-  </div>
-</section>
-
-<section id="contacts" class="section card">
-  <h2>Контакти</h2>
-
-  <div class="contacts-grid">
-    <div>
-      <p>📞 <b>Поръчки и резервации:</b> <a class="link" href="tel:+359895213002">0895 213 002</a></p>
-      <p>📞 <b>Управител:</b> <a class="link" href="tel:+359899855272">0899 85 52 72</a></p>
-      <p>📍 <b>Адрес:</b> гр. Дупница, ул. Никола Малашевски 9</p>
-      <p class="muted">
-        Пон–Чет: 10:00–23:00 • Пет: 10:00–00:00 • Съб: 10:00–02:00 • Неделя: почивен ден
-      </p>
-
-      <div class="btn-row">
-        <a class="btn" href="https://g.page/r/CRpsCLKmatJcEAE/review" target="_blank" rel="noopener">⭐ Остави отзив</a>
-        <a class="btn secondary" href="https://www.google.com/maps?q=гр.+Дупница,+ул.+Никола+Малашевски+9" target="_blank" rel="noopener">🗺️ Google Maps</a>
-        <a class="btn secondary" href="https://waze.com/ul?q=гр.%20Дупница%2C%20ул.%20Никола%20Малашевски%209&navigate=yes" target="_blank" rel="noopener">🧭 Waze</a>
+  <section id="orders" class="section card">
+    <h2>Поръчки за вкъщи</h2>
+    <div class="grid-2">
+      <div class="info">
+        <h3>Часове</h3>
+        <p>
+          ⏰ Доставка с наш транспорт: <b>11:00 – 20:00</b><br>
+          ⏰ Взимане от място: <b>11:00 – 21:30</b><br>
+          ❌ Неделя – не работим
+        </p>
+      </div>
+      <div class="info">
+        <h3>Инфо</h3>
+        <p>
+          📦 Кутии, торбички и прибори – <b>БЕЗПЛАТНО</b><br>
+          🚕 Доставката се заплаща от клиента (работим с таксита)
+        </p>
       </div>
     </div>
 
-    <div class="map">
-      <iframe
-        title="Карта - Ресторант Гладни Очи"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=гр.+Дупница,+ул.+Никола+Малашевски+9&output=embed">
-      </iframe>
-    </div>
-  </div>
-</section>
+    <a class="btn viber" href="viber://chat?number=%2B359895213002">
+      🟣 Поръчай във Viber
+    </a>
+  </section>
 
-<script src="app.js" defer></script>
+  <section id="drive" class="section card">
+    <h2>O'чи Drive</h2>
+    <p>
+      Външно гише за бързо обслужване – без влизане в ресторанта.<br>
+      ⏰ Работи от <b>11:00 до 15:00</b><br>
+      💳 Плащане в брой и с POS терминал
+    </p>
+  </section>
+
+  <section id="reservations" class="section card">
+    <h2>Резервации</h2>
+    <p class="muted">Попълни бланката и натисни „Изпрати“ – ще ти отвори Viber с готов текст.</p>
+
+    <form class="form" onsubmit="return sendReservationToViber(event)">
+      <div class="form-grid">
+        <label>Име
+          <input id="rName" required placeholder="Напр. Захари">
+        </label>
+
+        <label>Телефон
+          <input id="rPhone" required placeholder="Напр. 0895 213 002">
+        </label>
+
+        <label>Дата
+          <input id="rDate" required type="date">
+        </label>
+
+        <label>Час
+          <input id="rTime" required type="time">
+        </label>
+
+        <label>Брой хора
+          <input id="rPeople" required type="number" min="1" placeholder="Напр. 6">
+        </label>
+
+        <label>Повод (по желание)
+          <input id="rOccasion" placeholder="Рожден ден / фирмено…">
+        </label>
+      </div>
+
+      <label>Бележка (по желание)
+        <textarea id="rNote" rows="3" placeholder="Детски стол, маса навън, торта…"></textarea>
+      </label>
+
+      <button class="btn viber" type="submit">🟣 Изпрати резервация във Viber</button>
+    </form>
+  </section>
+
+  <section id="gallery" class="section card">
+    <h2>Снимки</h2>
+    <p class="muted">Сложи снимките в папка <b>assets</b> с имената по-долу (или смени имената в кода).</p>
+
+    <div class="gallery">
+      <img src="assets/gallery-1.jpg" alt="Ресторант Гладни О'чи – снимка 1" loading="lazy">
+      <img src="assets/gallery-2.jpg" alt="Ресторант Гладни О'чи – снимка 2" loading="lazy">
+      <img src="assets/gallery-3.jpg" alt="Ресторант Гладни О'чи – снимка 3" loading="lazy">
+      <img src="assets/gallery-4.jpg" alt="Ресторант Гладни О'чи – снимка 4" loading="lazy">
+    </div>
+  </section>
+
+  <section id="events" class="section card">
+    <h2>Събития и куверти</h2>
+    <ul class="list">
+      <li>Над 20 човека – препоръчителен куверт</li>
+      <li>Задължителен куверт: 14 февруари, 8 март, Нова година</li>
+      <li>Куверти: Вариант 1 (Свинско) / Вариант 2 (Пилешко)</li>
+      <li>Избор: уиски или ракия</li>
+      <li>Алкохол отвън – 20 € / бутилка</li>
+      <li>Торта отвън – 15 € (с документ)</li>
+      <li>След 02:00 – 75 € / час (петък и събота)</li>
+    </ul>
+  </section>
+
+  <section id="contacts" class="section card">
+    <h2>Контакти</h2>
+
+    <div class="grid-2">
+      <div class="info">
+        <h3>Връзка</h3>
+        <p>📞 <a class="link" href="tel:+359895213002">0895 213 002</a></p>
+        <p>📍 гр. Дупница, ул. Никола Малашевски 9</p>
+      </div>
+      <div class="info">
+        <h3>Работно време</h3>
+        <p>
+          Пон–Чет: 10:00–23:00<br>
+          Пет: 10:00–00:00<br>
+          Съб: 10:00–02:00
+        </p>
+      </div>
+    </div>
+
+    <div class="contacts-actions">
+      <a class="btn dark" href="https://g.page/r/CRpsCLKmatJcEAE/review" target="_blank" rel="noopener">
+        ⭐ Остави отзив
+      </a>
+      <a class="btn viber" href="viber://chat?number=%2B359895213002">
+        🟣 Пиши във Viber
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div>© <span id="year"></span> Ресторант Гладни О'чи • Дупница</div>
+  </footer>
+</main>
+
+<script src="app.js"></script>
 </body>
 </html>
