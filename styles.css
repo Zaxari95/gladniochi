@@ -394,3 +394,21 @@ ul { padding-left: 18px; }
 @media (max-width: 900px){
   .contacts-grid{ grid-template-columns: 1fr; }
 }
+
+/* Menu category titles */
+.menu-cat-title{
+  margin: 26px 0 10px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.10);
+  font-size: 18px;
+  letter-spacing: .2px;
+  color: rgba(255,255,255,.95);
+}
+.menu-item{
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.menu-item .price{
+  font-weight: 700;
+  opacity: .92;
+}
