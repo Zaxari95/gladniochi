@@ -97,3 +97,8 @@ select {
     display: none;
   }
 }
+
+.menu-item .row{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.menu-item .name{max-width:70%}
+.menu-item .desc{opacity:.9;margin-top:6px;line-height:1.35}
+}
