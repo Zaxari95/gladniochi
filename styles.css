@@ -238,9 +238,10 @@ select:focus {
 /* ================= SMALL POLISH ================= */
 ul { padding-left: 18px; }
 
-/* ===== LOGO FIX (WHITE) ===== */
+/* ===== LOGO WHITE + GLOW ===== */
 .logo {
-  height: 50px;
+  height: 52px;
   filter: brightness(0) invert(1);
   opacity: 1;
+  filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(255,255,255,0.35));
 }
