@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ресторант Гладни О'чи – Дупница</title>
+  <meta name="description" content="Ресторант Гладни О'чи – първо се храниш с очите. Меню, резервации и поръчки във Viber." />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">
+    <img src="assets/logo.png" alt="Ресторант Гладни Очи">
+  </div>
+  <nav>
+    <a href="#menu">Меню</a>
+    <a href="#reservation">Резервация</a>
+    <a href="#contacts">Контакти</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Ресторант Гладни О'чи</h1>
+  <p>Първо се храниш с очите</p>
+  <div class="hero-buttons">
+    <a href="#menu" class="btn">🍽 Меню</a>
+    <a href="#reservation" class="btn secondary">📅 Запази маса</a>
+  </div>
+</section>
+
+<section id="menu" class="menu">
+  <h2>Меню</h2>
+
+  <select id="mobileCategory" class="mobile-dropdown"></select>
+
+  <div class="tabs" id="tabs"></div>
+  <div id="menuContent"></div>
+</section>
+
+<section id="reservation" class="reservation">
+  <h2>Резервация</h2>
+  <p>Изпратете ни резервация във Viber и ще се свържем с вас възможно най-бързо.</p>
+
+  <a class="btn viber"
+     href="viber://chat?number=%2B359895213002">
+     Запази маса във Viber
+  </a>
+</section>
+
+<section id="contacts" class="contacts">
+  <h2>Контакти</h2>
+  <p>📞 0895 213 002</p>
+  <p>📍 гр. Дупница, ул. Никола Малашевски 9</p>
+  <p>🕒 Пон–Чет: 10:00–23:00 | Пет: 10:00–00:00 | Съб: 10:00–02:00</p>
+
+  <div class="contact-buttons">
+    <a href="tel:0895213002" class="btn">📞 Позвъни</a>
+    <a href="https://www.google.com/maps?q=Ресторант+Гладни+Очи+Дупница" target="_blank" class="btn secondary">🧭 Навигация</a>
+  </div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
