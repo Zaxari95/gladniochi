@@ -206,7 +206,7 @@ function escapeHtml(s) {
   }[c]));
 }
 
-// Рендер на цял раздел (Основно меню / Напитки) със сгъваеми категории (accordion)
+// Рендер на цял раздел (Основно меню / Напитки) с вътрешни категории
 function render(sectionName) {
   content.innerHTML = "";
 
@@ -215,58 +215,7 @@ function render(sectionName) {
 
   const cats = Object.keys(section);
 
-  cats.forEach((catName, idx) => {
-    const items = section[catName] || [];
-
-    // по подразбиране: първата категория отворена
-    const openClass = idx === 0 ? " open" : "";
-    const bodyStyle = idx === 0 ? "" : " style=\"display:none;\"";
-
-    let itemsHtml = "";
-    items.forEach(i => {
-      const desc = i.desc ? `<div class="desc">${escapeHtml(i.desc)}</div>` : "";
-      itemsHtml += `
-        <div class="menu-item">
-          <div class="row">
-            <b class="name">${escapeHtml(i.name)}</b>
-            ${formatPrices(i.price)}
-          </div>
-          ${desc}
-        </div>
-      `;
-    });
-
-    content.innerHTML += `
-      <div class="acc${openClass}">
-        <button class="acc-head" type="button">
-          <span class="acc-title">${escapeHtml(catName)}</span>
-          <span class="acc-icon">▾</span>
-        </button>
-        <div class="acc-body"${bodyStyle}>
-          ${itemsHtml}
-        </div>
-      </div>
-    `;
-  });
-
-  // закачаме кликовете за отваряне/затваряне
-  document.querySelectorAll(".acc-head").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const wrap = btn.closest(".acc");
-      const body = wrap.querySelector(".acc-body");
-
-      const isOpen = wrap.classList.contains("open");
-      if (isOpen) {
-        wrap.classList.remove("open");
-        body.style.display = "none";
-      } else {
-        wrap.classList.add("open");
-        body.style.display = "block";
-      }
-    });
-  });
-}
-
+  cats.forEach(catName => {
     // Заглавие на категория
     content.innerHTML += `<h3 class="menu-cat-title">${escapeHtml(catName)}</h3>`;
 
