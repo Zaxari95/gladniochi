@@ -442,3 +442,7 @@ ul { padding-left: 18px; }
 header img.logo {
   filter: brightness(0) invert(1);
 }
+
+header img {
+  filter: brightness(0) invert(1);
+}
