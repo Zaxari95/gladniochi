@@ -412,20 +412,3 @@ ul { padding-left: 18px; }
   font-weight: 700;
   opacity: .92;
 }
-
-.hero-logo {
-  max-width: 220px;
-  margin: 20px auto;
-  display: block;
-}
-
-.hero-title {
-  text-align: center;
-  font-size: 42px;
-}
-
-.hero-sub {
-  text-align: center;
-  opacity: 0.85;
-  margin-bottom: 20px;
-}
