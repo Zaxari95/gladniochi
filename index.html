@@ -130,7 +130,7 @@
     <h2>Резервации</h2>
     <p class="muted">Попълни бланката и натисни „Изпрати“ – ще ти отвори Viber с готов текст.</p>
 
-    <form class="form" onsubmit="return sendReservationToViber(event)">
+    <form id="reservationForm" class="form">
       <div class="form-grid">
         <label>Име
           <input id="rName" required placeholder="Напр. Захари">
@@ -161,7 +161,8 @@
         <textarea id="rNote" rows="3" placeholder="Детски стол, маса навън, торта…"></textarea>
       </label>
 
-      <button class="btn viber" type="submit">🟣 Изпрати резервация във Viber</button>
+      <button class="btn viber" type="button" id="sendReservationBtn">🟣 Изпрати резервация във Viber</button>
+      
     </form>
   </section>
 
