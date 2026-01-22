@@ -273,3 +273,62 @@ function init() {
 }
 
 init();
+
+// ===== Footer year (ако ползваш <span id="year"></span>) =====
+(function setYear() {
+  const y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+})();
+
+// ===== Reservations -> Viber (prefilled message) =====
+function sendReservationToViber(e) {
+  if (e && e.preventDefault) e.preventDefault();
+
+  const get = (id) => (document.getElementById(id)?.value || "").trim();
+
+  const name = get("rName");
+  const phone = get("rPhone");
+  const date = get("rDate");
+  const time = get("rTime");
+  const people = get("rPeople");
+  const occasion = get("rOccasion");
+  const note = get("rNote");
+
+  // basic validation (HTML required пак го прави, но това помага ако нещо е празно)
+  if (!name || !phone || !date || !time || !people) {
+    alert("Моля, попълни: Име, Телефон, Дата, Час и Брой хора.");
+    return false;
+  }
+
+  const msg =
+`РЕЗЕРВАЦИЯ – Ресторант Гладни О'чи
+Име: ${name}
+Телефон: ${phone}
+Дата: ${date}
+Час: ${time}
+Брой хора: ${people}`
+  + (occasion ? `\nПовод: ${occasion}` : "")
+  + (note ? `\nБележка: ${note}` : "")
+  + `\n\nАдрес: гр. Дупница, ул. Никола Малашевски 9`;
+
+  const viberNumber = "+359895213002";
+
+  // Опит 1: Viber chat с готов текст
+  const viberUrl = `viber://chat?number=${encodeURIComponent(viberNumber)}&text=${encodeURIComponent(msg)}`;
+  window.location.href = viberUrl;
+
+  // Fallback: ако Viber не се отвори/не приеме текста – копирай текста
+  setTimeout(async () => {
+    // ако страницата не е "скрита" (т.е. Viber не се е отворил)
+    if (!document.hidden) {
+      try {
+        await navigator.clipboard.writeText(msg);
+        alert("Viber не се отвори автоматично. Текстът е копиран ✅\nОтвори Viber и го постави в чата към ресторанта.");
+      } catch {
+        alert("Viber не се отвори автоматично. Копирай текста ръчно:\n\n" + msg);
+      }
+    }
+  }, 900);
+
+  return false; // важно: да не рефрешва страницата
+}
