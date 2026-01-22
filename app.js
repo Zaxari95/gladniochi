@@ -287,6 +287,15 @@ function sendReservationToViber(e) {
     e.stopPropagation();
   }
 
+// ===== Bind reservation form (works on iPhone/Android/Desktop) =====
+(function bindReservation() {
+  const form = document.getElementById("reservationForm");
+  const btn = document.getElementById("sendReservationBtn");
+
+  if (form) form.addEventListener("submit", sendReservationToViber);
+  if (btn) btn.addEventListener("click", sendReservationToViber);
+})();
+  
   const get = (id) => (document.getElementById(id)?.value || "").trim();
 
   const name = get("rName");
