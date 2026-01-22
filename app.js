@@ -287,15 +287,6 @@ function sendReservationToViber(e) {
     e.stopPropagation();
   }
 
-// ===== Bind reservation form (works on iPhone/Android/Desktop) =====
-(function bindReservation() {
-  const form = document.getElementById("reservationForm");
-  const btn = document.getElementById("sendReservationBtn");
-
-  if (form) form.addEventListener("submit", sendReservationToViber);
-  if (btn) btn.addEventListener("click", sendReservationToViber);
-})();
-  
   const get = (id) => (document.getElementById(id)?.value || "").trim();
 
   const name = get("rName");
@@ -306,7 +297,6 @@ function sendReservationToViber(e) {
   const occasion = get("rOccasion");
   const note = get("rNote");
 
-  // basic validation (HTML required пак го прави, но това помага ако нещо е празно)
   if (!name || !phone || !date || !time || !people) {
     alert("Моля, попълни: Име, Телефон, Дата, Час и Брой хора.");
     return false;
@@ -324,14 +314,13 @@ function sendReservationToViber(e) {
   + `\n\nАдрес: гр. Дупница, ул. Никола Малашевски 9`;
 
   const viberNumber = "+359895213002";
-
-  // Опит 1: Viber chat с готов текст
   const viberUrl = `viber://chat?number=${encodeURIComponent(viberNumber)}&text=${encodeURIComponent(msg)}`;
+
+  // Опит 1: отвори Viber
   window.location.href = viberUrl;
 
-  // Fallback: ако Viber не се отвори/не приеме текста – копирай текста
+  // Fallback: ако Viber не се отвори – копирай текста
   setTimeout(async () => {
-    // ако страницата не е "скрита" (т.е. Viber не се е отворил)
     if (!document.hidden) {
       try {
         await navigator.clipboard.writeText(msg);
@@ -342,5 +331,23 @@ function sendReservationToViber(e) {
     }
   }, 900);
 
-  return false; // важно: да не рефрешва страницата
+  return false;
 }
+
+// ===== Bind reservation form (works on iPhone/Android/Desktop) =====
+// Слагаш това НАЙ-ДОЛУ в app.js (след функцията), за да е сигурно, че DOM е зареден.
+(function bindReservation() {
+  const bind = () => {
+    const form = document.getElementById("reservationForm");
+    const btn = document.getElementById("sendReservationBtn");
+
+    if (form) form.addEventListener("submit", sendReservationToViber);
+    if (btn) btn.addEventListener("click", sendReservationToViber);
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bind);
+  } else {
+    bind();
+  }
+})();
