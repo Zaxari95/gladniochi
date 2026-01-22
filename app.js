@@ -282,7 +282,10 @@ init();
 
 // ===== Reservations -> Viber (prefilled message) =====
 function sendReservationToViber(e) {
-  if (e && e.preventDefault) e.preventDefault();
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
 
   const get = (id) => (document.getElementById(id)?.value || "").trim();
 
