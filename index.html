@@ -131,40 +131,41 @@
     <p class="muted">Попълни бланката и натисни „Изпрати“ – ще ти отвори Viber с готов текст.</p>
 
     <form id="reservationForm" class="form">
-      <div class="form-grid">
-        <label>Име
-          <input id="rName" required placeholder="Напр. Захари">
-        </label>
+  <div class="form-grid">
+    <label>Име
+      <input id="rName" required placeholder="Напр. Захари">
+    </label>
 
-        <label>Телефон
-          <input id="rPhone" required placeholder="Напр. 0895 213 002">
-        </label>
+    <label>Телефон
+      <input id="rPhone" required placeholder="Напр. 0895 213 002">
+    </label>
 
-        <label>Дата
-          <input id="rDate" required type="date">
-        </label>
+    <label>Дата
+      <input id="rDate" required type="date">
+    </label>
 
-        <label>Час
-          <input id="rTime" required type="time">
-        </label>
+    <label>Час
+      <input id="rTime" required type="time">
+    </label>
 
-        <label>Брой хора
-          <input id="rPeople" required type="number" min="1" placeholder="Напр. 6">
-        </label>
+    <label>Брой хора
+      <input id="rPeople" required type="number" min="1" placeholder="Напр. 6">
+    </label>
 
-        <label>Повод (по желание)
-          <input id="rOccasion" placeholder="Рожден ден / фирмено…">
-        </label>
-      </div>
+    <label>Повод (по желание)
+      <input id="rOccasion" placeholder="Рожден ден / фирмено…">
+    </label>
+  </div>
 
-      <label>Бележка (по желание)
-        <textarea id="rNote" rows="3" placeholder="Детски стол, маса навън, торта…"></textarea>
-      </label>
+  <label>Бележка (по желание)
+    <textarea id="rNote" rows="3" placeholder="Детски стол, маса навън, торта…"></textarea>
+  </label>
 
-      <button class="btn viber" type="button" id="sendReservationBtn">🟣 Изпрати резервация във Viber</button>
-      
-    </form>
-  </section>
+  <!-- ВАЖНО: submit, не button -->
+  <button class="btn viber" type="submit" id="sendReservationBtn">
+    🟣 Изпрати резервация във Viber
+  </button>
+</form>
 
   <section id="gallery" class="section card">
     <h2>Снимки</h2>
