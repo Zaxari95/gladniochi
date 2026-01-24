@@ -559,3 +559,11 @@ header img {
   .ig-slider{ grid-auto-columns: 52%; }
   .ig-item img{ height: 420px; }
 }
+
+@media (max-width: 760px){
+  .g-item img{
+    height: 260px;              /* можеш 240/260/280 */
+    object-fit: contain;         /* НЕ реже на телефон */
+    background: rgba(0,0,0,.35); /* ако има “ленти” */
+  }
+}
