@@ -209,25 +209,70 @@
     </section> <!-- край на Events -->
 
 <section id="testimonials" class="section card">
-  <h2>Отзиви от наши гости</h2>
+  <div class="reviews-head">
+    <div>
+      <h2>Отзиви от наши гости</h2>
+      <p class="muted">2–3 реални мнения (можем да добавим още).</p>
+    </div>
 
-  <blockquote class="review">
-    ⭐⭐⭐⭐⭐
-    <p>Уютна и стилна обстановка, отлична храна и страхотно обслужване. Препоръчвам!</p>
-    <footer>— Георги (Google Reviews)</footer>
-  </blockquote>
+    <!-- Бутон към Google Reviews -->
+    <a class="btn secondary reviews-btn"
+       href="https://g.page/r/CRpsCLKmatJcEAE/review"
+       target="_blank" rel="noopener">
+      ⭐ Виж всички в Google
+    </a>
+  </div>
 
-  <blockquote class="review">
-    ⭐⭐⭐⭐☆
-    <p>Много добро място за семейни и фирмени събития. Храната е на ниво.</p>
-    <footer>— Мария (Google Reviews)</footer>
-  </blockquote>
+  <div class="reviews-wrap" aria-label="Отзиви (плъзгащи се)">
+    <button class="reviews-arrow prev" type="button" aria-label="Предишен отзив">‹</button>
 
-  <blockquote class="review">
-    ⭐⭐⭐⭐⭐
-    <p>Едно от най-хубавите заведения в Дупница. Винаги се връщаме с удоволствие.</p>
-    <footer>— Стоян (Google Reviews)</footer>
-  </blockquote>
+    <div class="reviews-viewport">
+      <div class="reviews-track" id="reviewsTrack">
+        <!-- Review 1 -->
+        <article class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">
+            Уютна и стилна обстановка, отлична храна и много добро обслужване. Препоръчвам!
+          </p>
+          <div class="review-footer">
+            <span class="review-author">— Георги</span>
+            <span class="review-source">Google Reviews</span>
+          </div>
+          <button class="review-more" type="button">Прочети още</button>
+        </article>
+
+        <!-- Review 2 -->
+        <article class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">
+            Много приятно място за повод. Поръчките идват бързо, а храната е на ниво.
+          </p>
+          <div class="review-footer">
+            <span class="review-author">— Мария</span>
+            <span class="review-source">Google Reviews</span>
+          </div>
+          <button class="review-more" type="button">Прочети още</button>
+        </article>
+
+        <!-- Review 3 -->
+        <article class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">
+            Едно от най-добрите заведения в Дупница. Винаги се връщаме с удоволствие!
+          </p>
+          <div class="review-footer">
+            <span class="review-author">— Стоян</span>
+            <span class="review-source">Google Reviews</span>
+          </div>
+          <button class="review-more" type="button">Прочети още</button>
+        </article>
+      </div>
+    </div>
+
+    <button class="reviews-arrow next" type="button" aria-label="Следващ отзив">›</button>
+  </div>
+
+  <div class="reviews-dots" id="reviewsDots" aria-label="Навигация по отзиви"></div>
 </section>
 
 <section id="contacts" class="section card">
