@@ -647,39 +647,66 @@ header img {
   border-color: rgba(122,60,255,.60);
 }
 
-/* ===== REVIEWS (Carousel + Mobile clamp) ===== */
+/* ===== REVIEWS (Swipe like Instagram) ===== */
 .reviews-head{
   display:flex;
-  align-items:flex-end;
+  align-items:center;
   justify-content:space-between;
-  gap:14px;
+  gap:12px;
   margin-bottom: 14px;
 }
-.reviews-btn{ white-space: nowrap; }
+.reviews-head h2{ margin:0; }
+
+.reviews-btn{
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* Mobile: title left, button below (no overflow) */
+@media (max-width: 640px){
+  .reviews-head{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .reviews-btn{
+    width: 100%;
+    text-align: center;
+  }
+}
 
 .reviews-wrap{
-  display:flex;
-  align-items:center;
-  gap:10px;
   position: relative;
 }
+
 .reviews-viewport{
-  overflow:hidden;
-  width:100%;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 18px;
 }
+
 .reviews-track{
   display:flex;
   gap:12px;
-  scroll-behavior:smooth;
-  transform: translateZ(0);
+
+  /* key for mobile swipe */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 6px;
+
+  scrollbar-width: none; /* Firefox */
 }
+.reviews-track::-webkit-scrollbar{ display:none; } /* Chrome/Safari */
+
 .review-card{
-  flex: 0 0 100%;
+  flex: 0 0 86%;
+  scroll-snap-align: start;
   background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.08);
   border-radius: 18px;
   padding: 16px 16px 12px;
 }
+
 @media (min-width: 860px){
   .review-card{ flex: 0 0 calc(50% - 6px); }
 }
@@ -687,11 +714,7 @@ header img {
   .review-card{ flex: 0 0 calc(33.333% - 8px); }
 }
 
-.review-stars{
-  font-weight: 900;
-  letter-spacing: .3px;
-  margin-bottom: 8px;
-}
+.review-stars{ font-weight: 900; margin-bottom: 8px; }
 
 .review-text{
   margin: 0;
@@ -699,11 +722,11 @@ header img {
   line-height: 1.55;
 }
 
-/* Автоматично скъсяване на мобилно */
+/* Auto clamp on mobile */
 @media (max-width: 720px){
   .review-text{
     display: -webkit-box;
-    -webkit-line-clamp: 3;  /* колко реда да показва */
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -718,13 +741,13 @@ header img {
   justify-content:space-between;
   gap:10px;
   margin-top: 12px;
-  opacity: .9;
   font-weight: 700;
   font-size: 13px;
   color: rgba(255,255,255,.82);
 }
 .review-source{ opacity: .75; font-weight: 800; }
 
+/* "Read more" only on mobile */
 .review-more{
   display:none;
   margin-top: 10px;
@@ -740,7 +763,11 @@ header img {
   .review-more{ display:inline-block; }
 }
 
+/* arrows desktop only */
 .reviews-arrow{
+  position:absolute;
+  top: 50%;
+  transform: translateY(-50%);
   width:42px;
   height:42px;
   border-radius:999px;
@@ -753,12 +780,14 @@ header img {
   display:flex;
   align-items:center;
   justify-content:center;
-  flex: 0 0 auto;
+  z-index: 2;
 }
-.reviews-arrow:hover{ opacity: .95; transform: translateY(-1px); }
+.reviews-arrow.prev{ left: -10px; }
+.reviews-arrow.next{ right: -10px; }
+.reviews-arrow:hover{ opacity: .95; }
 
 @media (max-width: 640px){
-  .reviews-arrow{ display:none; } /* на телефон – плъзгаш с пръст */
+  .reviews-arrow{ display:none; }
 }
 
 .reviews-dots{
