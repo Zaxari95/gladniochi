@@ -476,3 +476,102 @@ function sendReservationToViber(e) {
   // Init
   activeIndex();
 })();
+
+// ===== Reviews carousel (auto + arrows + dots + mobile "read more") =====
+(function initReviews() {
+  const track = document.getElementById("reviewsTrack");
+  const dotsWrap = document.getElementById("reviewsDots");
+  if (!track || !dotsWrap) return;
+
+  const cards = Array.from(track.querySelectorAll(".review-card"));
+  if (!cards.length) return;
+
+  // --- Dots ---
+  dotsWrap.innerHTML = "";
+  const dots = cards.map((_, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("aria-label", `Отзив ${i + 1}`);
+    b.addEventListener("click", () => goTo(i, true));
+    dotsWrap.appendChild(b);
+    return b;
+  });
+
+  const prevBtn = document.querySelector(".reviews-arrow.prev");
+  const nextBtn = document.querySelector(".reviews-arrow.next");
+
+  let index = 0;
+  let timer = null;
+
+  function cardWidth() {
+    // взима реалната ширина + gap
+    const first = cards[0];
+    const style = getComputedStyle(track);
+    const gap = parseFloat(style.gap || "0");
+    return first.getBoundingClientRect().width + gap;
+  }
+
+  function setActiveDot(i) {
+    dots.forEach((d, k) => d.classList.toggle("active", k === i));
+  }
+
+  function goTo(i, userAction = false) {
+    index = (i + cards.length) % cards.length;
+    track.scrollTo({ left: index * cardWidth(), behavior: "smooth" });
+    setActiveDot(index);
+    if (userAction) restartAuto();
+  }
+
+  function next() { goTo(index + 1, true); }
+  function prev() { goTo(index - 1, true); }
+
+  if (nextBtn) nextBtn.addEventListener("click", next);
+  if (prevBtn) prevBtn.addEventListener("click", prev);
+
+  // след скрол (например със swipe) — обнови dot-овете
+  let scrollT = null;
+  track.addEventListener("scroll", () => {
+    clearTimeout(scrollT);
+    scrollT = setTimeout(() => {
+      const w = cardWidth();
+      const i = Math.round(track.scrollLeft / w);
+      index = Math.max(0, Math.min(cards.length - 1, i));
+      setActiveDot(index);
+      restartAuto();
+    }, 80);
+  });
+
+  // --- Auto slide ---
+  function startAuto() {
+    stopAuto();
+    timer = setInterval(() => {
+      goTo(index + 1, false);
+    }, 4500);
+  }
+  function stopAuto() {
+    if (timer) clearInterval(timer);
+    timer = null;
+  }
+  function restartAuto() {
+    stopAuto();
+    startAuto();
+  }
+
+  // пауза при hover (desktop)
+  track.addEventListener("mouseenter", stopAuto);
+  track.addEventListener("mouseleave", startAuto);
+
+  // --- Mobile "Read more" toggle ---
+  track.querySelectorAll(".review-more").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".review-card");
+      if (!card) return;
+      const expanded = card.classList.toggle("expanded");
+      btn.textContent = expanded ? "Скрий" : "Прочети още";
+    });
+  });
+
+  // init
+  setActiveDot(0);
+  startAuto();
+})();
