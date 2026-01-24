@@ -807,20 +807,3 @@ header img {
   background: var(--accent);
   border-color: rgba(255,255,255,.22);
 }
-
-/* Reviews button – compact & elegant */
-.reviews-btn{
-  padding: 10px 16px;
-  font-size: 14px;
-  border-radius: 999px;
-  align-self: flex-start;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.14);
-}
-
-/* Mobile – да не е 100% ширина */
-@media (max-width: 640px){
-  .reviews-btn{
-    width: auto;
-  }
-}
