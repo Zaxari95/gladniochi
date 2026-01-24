@@ -446,3 +446,46 @@ header img.logo {
 header img {
   filter: brightness(0) invert(1);
 }
+
+/* ===== FIX: Gallery layout (no overflow, nice grid) ===== */
+.gallery{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.gallery img{
+  width: 100%;
+  height: 220px;          /* височина на картинката */
+  display: block;
+  object-fit: cover;      /* запълва красиво без да се разтяга */
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+}
+
+/* ако ползваш <a class="g-item"> */
+.g-item{
+  display: block;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.g-item img{
+  transition: transform .25s ease;
+}
+
+.g-item:hover img{
+  transform: scale(1.03);
+}
+
+/* Mobile: 1 колона */
+@media (max-width: 760px){
+  .gallery{
+    grid-template-columns: 1fr;
+  }
+  .gallery img{
+    height: 260px;
+  }
+}
