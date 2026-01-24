@@ -647,24 +647,134 @@ header img {
   border-color: rgba(122,60,255,.60);
 }
 
-/* ===== GOOGLE REVIEWS ===== */
-#testimonials .review {
-  margin-bottom: 18px;
-  padding: 16px 18px;
-  border-left: 4px solid var(--accent);
+/* ===== REVIEWS (Carousel + Mobile clamp) ===== */
+.reviews-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom: 14px;
+}
+.reviews-btn{ white-space: nowrap; }
+
+.reviews-wrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  position: relative;
+}
+.reviews-viewport{
+  overflow:hidden;
+  width:100%;
+}
+.reviews-track{
+  display:flex;
+  gap:12px;
+  scroll-behavior:smooth;
+  transform: translateZ(0);
+}
+.review-card{
+  flex: 0 0 100%;
   background: rgba(255,255,255,.04);
-  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  padding: 16px 16px 12px;
+}
+@media (min-width: 860px){
+  .review-card{ flex: 0 0 calc(50% - 6px); }
+}
+@media (min-width: 1180px){
+  .review-card{ flex: 0 0 calc(33.333% - 8px); }
 }
 
-#testimonials .review p {
-  margin: 8px 0;
+.review-stars{
+  font-weight: 900;
+  letter-spacing: .3px;
+  margin-bottom: 8px;
+}
+
+.review-text{
+  margin: 0;
   color: var(--muted);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
-#testimonials .review footer {
-  text-align: right;
-  font-size: 14px;
-  font-weight: 700;
+/* Автоматично скъсяване на мобилно */
+@media (max-width: 720px){
+  .review-text{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;  /* колко реда да показва */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .review-card.expanded .review-text{
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+}
+
+.review-footer{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top: 12px;
   opacity: .9;
+  font-weight: 700;
+  font-size: 13px;
+  color: rgba(255,255,255,.82);
+}
+.review-source{ opacity: .75; font-weight: 800; }
+
+.review-more{
+  display:none;
+  margin-top: 10px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.25);
+  color: #fff;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+@media (max-width: 720px){
+  .review-more{ display:inline-block; }
+}
+
+.reviews-arrow{
+  width:42px;
+  height:42px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.30);
+  color:#fff;
+  font-size: 26px;
+  font-weight: 900;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex: 0 0 auto;
+}
+.reviews-arrow:hover{ opacity: .95; transform: translateY(-1px); }
+
+@media (max-width: 640px){
+  .reviews-arrow{ display:none; } /* на телефон – плъзгаш с пръст */
+}
+
+.reviews-dots{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  margin-top: 12px;
+}
+.reviews-dots button{
+  width:10px; height:10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.18);
+  cursor:pointer;
+}
+.reviews-dots button.active{
+  background: var(--accent);
+  border-color: rgba(255,255,255,.22);
 }
