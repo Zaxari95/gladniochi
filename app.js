@@ -351,3 +351,49 @@ function sendReservationToViber(e) {
     bind();
   }
 })();
+
+// ===== IG swipe gallery dots =====
+(function igGallery(){
+  const slider = document.getElementById("igSlider");
+  const dotsWrap = document.getElementById("igDots");
+  if (!slider || !dotsWrap) return;
+
+  const items = Array.from(slider.querySelectorAll(".ig-item"));
+  dotsWrap.innerHTML = "";
+
+  const dots = items.map((_, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "ig-dot" + (i === 0 ? " active" : "");
+    b.setAttribute("aria-label", `Снимка ${i+1}`);
+    b.addEventListener("click", () => {
+      items[i].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    });
+    dotsWrap.appendChild(b);
+    return b;
+  });
+
+  const setActive = (idx) => dots.forEach((d, i) => d.classList.toggle("active", i === idx));
+
+  const getClosestIndex = () => {
+    const sliderRect = slider.getBoundingClientRect();
+    const center = sliderRect.left + sliderRect.width / 2;
+    let best = 0;
+    let bestDist = Infinity;
+
+    items.forEach((it, i) => {
+      const r = it.getBoundingClientRect();
+      const c = r.left + r.width / 2;
+      const dist = Math.abs(center - c);
+      if (dist < bestDist) { bestDist = dist; best = i; }
+    });
+
+    return best;
+  };
+
+  let t = null;
+  slider.addEventListener("scroll", () => {
+    clearTimeout(t);
+    t = setTimeout(() => setActive(getClosestIndex()), 80);
+  }, { passive: true });
+})();
