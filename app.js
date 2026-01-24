@@ -397,3 +397,82 @@ function sendReservationToViber(e) {
     t = setTimeout(() => setActive(getClosestIndex()), 80);
   }, { passive: true });
 })();
+
+// ===== Gallery swipe + buttons + dots =====
+(function gallerySwipe(){
+  const track = document.getElementById("galleryTrack");
+  const dotsWrap = document.getElementById("galleryDots");
+  if (!track || !dotsWrap) return;
+
+  const items = Array.from(track.querySelectorAll("img"));
+  if (!items.length) return;
+
+  // Dots
+  dotsWrap.innerHTML = items.map((_, i) =>
+    `<span class="g-dot${i===0?' active':''}" data-i="${i}"></span>`
+  ).join("");
+
+  const dots = Array.from(dotsWrap.querySelectorAll(".g-dot"));
+
+  function activeIndex(){
+    // намираме най-близката картинка до центъра
+    const rect = track.getBoundingClientRect();
+    const center = rect.left + rect.width / 2;
+
+    let best = 0;
+    let bestDist = Infinity;
+
+    items.forEach((img, i) => {
+      const r = img.getBoundingClientRect();
+      const imgCenter = r.left + r.width / 2;
+      const d = Math.abs(imgCenter - center);
+      if (d < bestDist) { bestDist = d; best = i; }
+    });
+
+    dots.forEach(d => d.classList.remove("active"));
+    if (dots[best]) dots[best].classList.add("active");
+    return best;
+  }
+
+  function scrollToIndex(i){
+    const el = items[i];
+    if (!el) return;
+    // центрираме елемента
+    const left = el.offsetLeft - (track.clientWidth - el.clientWidth) / 2;
+    track.scrollTo({ left, behavior: "smooth" });
+  }
+
+  // Click on dots
+  dotsWrap.addEventListener("click", (e) => {
+    const t = e.target.closest(".g-dot");
+    if (!t) return;
+    scrollToIndex(Number(t.dataset.i));
+  });
+
+  // Desktop arrows
+  const prevBtn = document.querySelector(".g-prev");
+  const nextBtn = document.querySelector(".g-next");
+
+  function step(dir){
+    const i = activeIndex();
+    const next = Math.max(0, Math.min(items.length - 1, i + dir));
+    scrollToIndex(next);
+  }
+
+  if (prevBtn) prevBtn.addEventListener("click", () => step(-1));
+  if (nextBtn) nextBtn.addEventListener("click", () => step(1));
+
+  // Update active dot on scroll (throttled)
+  let ticking = false;
+  track.addEventListener("scroll", () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      activeIndex();
+      ticking = false;
+    });
+  });
+
+  // Init
+  activeIndex();
+})();
