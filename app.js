@@ -204,12 +204,12 @@ const menuData = {
       { name: "Аперол Шприц", desc: "300 мл", price: 5.20 }
     ],
 
-    "🍾 Ром": [
-      { name: "Бакарди Бял", desc: "50 мл", price: 2.10 }
-    }
+      "🍾 Ром": [
+    { name: "Бакарди Бял", desc: "50 мл", price: 2.10 }
+  ]
   }
-}
-
+  }
+};
 const tabs = document.getElementById("tabs");
 const mobile = document.getElementById("mobileCategory");
 const content = document.getElementById("menuContent");
