@@ -1025,3 +1025,14 @@ header img {
 .btn-icon {
   filter: invert(1);
 }
+
+/* ===== Icons in buttons ===== */
+.btn-icon {
+  width: 22px;
+  height: 22px;
+  filter: invert(1);
+}
+
+.btn:hover .btn-icon {
+  filter: invert(1) brightness(1.2);
+}
