@@ -823,3 +823,32 @@ header img {
     width: 100%;
   }
 }
+
+/* ===== SOCIAL ICONS (round) ===== */
+.social-icons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.social-icon{
+  width:42px;
+  height:42px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-size:20px;
+  color:#fff;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.12);
+  transition: transform .10s ease, opacity .10s ease;
+}
+
+.social-icon:hover{ transform: translateY(-1px); opacity:.95; }
+
+.social-icon.fb{ background: rgba(24,119,242,.22); }
+.social-icon.ig{ background: rgba(225,48,108,.18); }
+.social-icon.tt{ background: rgba(0,0,0,.18); }
