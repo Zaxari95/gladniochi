@@ -804,3 +804,22 @@ header img {
 .reviews-dots span.active {
   background: var(--accent);
 }
+
+/* === SOCIAL BUTTONS === */
+.contacts-actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contacts-actions .btn{
+  min-width: 160px;
+  text-align: center;
+}
+
+/* Mobile */
+@media (max-width: 520px){
+  .contacts-actions .btn{
+    width: 100%;
+  }
+}
