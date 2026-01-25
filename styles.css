@@ -1009,3 +1009,15 @@ header img {
   color: #ff7a7a;
   font-weight: 900;
 }
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
