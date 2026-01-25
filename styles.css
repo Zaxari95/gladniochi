@@ -852,3 +852,12 @@ header img {
 .social-icon.fb{ background: rgba(24,119,242,.22); }
 .social-icon.ig{ background: rgba(225,48,108,.18); }
 .social-icon.tt{ background: rgba(0,0,0,.18); }
+
+/* ===== Menu subcategories (Напитки / Алкохол / Уиски и т.н.) ===== */
+.menu-subcat-title{
+  margin: 14px 0 8px;
+  font-size: 15px;
+  font-weight: 900;
+  color: rgba(255,255,255,.85);
+  opacity: .95;
+}
