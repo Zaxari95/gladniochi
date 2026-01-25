@@ -484,10 +484,7 @@ function sendReservationToViber(e) {
   if (!track || !dotsWrap) return;
 
   const cards = Array.from(track.querySelectorAll(".review-card"));
-  if (cards.length < 2) {
-    // ако е само 1 карта – скриваме dots
-    dotsWrap.style.display = "none";
-  }
+  if (!cards.length) return;
 
   // Dots
   dotsWrap.innerHTML = "";
@@ -510,10 +507,19 @@ function sendReservationToViber(e) {
     dots.forEach((d, k) => d.classList.toggle("active", k === i));
   }
 
-  function goTo(i, userAction=false) {
-    if (!cards.length) return;
+  // ✅ Horizontal-only scroll (NO vertical page jump)
+  function scrollCardTo(i, smooth = true) {
+    const card = cards[i];
+    if (!card) return;
+
+    // left position of card inside the horizontal scroller
+    const left = card.offsetLeft - track.offsetLeft;
+    track.scrollTo({ left, behavior: smooth ? "smooth" : "auto" });
+  }
+
+  function goTo(i, userAction = false) {
     index = (i + cards.length) % cards.length;
-    cards[index].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    scrollCardTo(index, true);
     setActiveDot(index);
     if (userAction) restartAuto();
   }
@@ -524,19 +530,28 @@ function sendReservationToViber(e) {
   if (nextBtn) nextBtn.addEventListener("click", next);
   if (prevBtn) prevBtn.addEventListener("click", prev);
 
-  // Update index on swipe scroll (iPhone friendly)
-  let st = null;
+  // Update active dot on swipe/scroll
+  let raf = null;
   track.addEventListener("scroll", () => {
-    clearTimeout(st);
-    st = setTimeout(() => {
-      const rects = cards.map(c => Math.abs(c.getBoundingClientRect().left - track.getBoundingClientRect().left));
-      const i = rects.indexOf(Math.min(...rects));
-      if (i >= 0) {
-        index = i;
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      const center = track.scrollLeft + track.clientWidth / 2;
+
+      let best = 0;
+      let bestDist = Infinity;
+
+      cards.forEach((c, i) => {
+        const cCenter = (c.offsetLeft - track.offsetLeft) + c.clientWidth / 2;
+        const dist = Math.abs(cCenter - center);
+        if (dist < bestDist) { bestDist = dist; best = i; }
+      });
+
+      if (best !== index) {
+        index = best;
         setActiveDot(index);
         restartAuto();
       }
-    }, 80);
+    });
   }, { passive: true });
 
   // Mobile "Read more"
@@ -560,6 +575,8 @@ function sendReservationToViber(e) {
   }
   function restartAuto() { stopAuto(); startAuto(); }
 
+  // Init
   setActiveDot(0);
+  scrollCardTo(0, false); // без анимация при зареждане
   startAuto();
 })();
