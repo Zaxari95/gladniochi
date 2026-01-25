@@ -1010,123 +1010,79 @@ header img {
   font-weight: 900;
 }
 
-.btn {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.btn-icon {
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
-}
-
-.btn-icon {
-  filter: invert(1);
-}
-
-/* ===== Icons in buttons ===== */
-.btn-icon {
-  width: 22px;
-  height: 22px;
-  filter: invert(1);
-}
-
-.btn:hover .btn-icon {
-  filter: invert(1) brightness(1.2);
-}
-
-/* ===== Brand buttons ===== */
-.btn.brand {
-  border: none;
-  color: #fff;
-  font-weight: 600;
-  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
-}
-
-.btn.brand:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0,0,0,.35);
-}
-
-/* Facebook */
-.btn.facebook {
-  background: #1877f2;
-}
-
-/* Instagram */
-.btn.instagram {
-  background: linear-gradient(45deg,
-    #f58529,
-    #dd2a7b,
-    #8134af,
-    #515bd4
-  );
-}
-
-/* TikTok */
-.btn.tiktok {
-  background: #000;
-}
-
-/* Google Review */
-.btn.google {
-  background: linear-gradient(45deg, #4285f4, #34a853, #fbbc05, #ea4335);
-}
-
-/* Google Maps */
-.btn.maps {
-  background: #1a73e8;
-}
-
-/* Waze */
-.btn.waze {
-  background: #33ccff;
-  color: #000;
-}
-
-.btn.waze .btn-icon {
-  filter: none;
-}
-
-/* Viber */
-.btn.viber {
-  background: #7360f2;
-}
-
-/* Buttons (global) – НЕ чупи layout-а */
+/* ===== Buttons (GLOBAL) ===== */
 .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 
-  padding:12px 22px;
-  border-radius:999px;
+  padding: 12px 22px;
+  border-radius: 999px;
 
-  border:1px solid rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.12);
   background: var(--accent);
+  color: #fff;
 
-  color:#fff;
-  font-weight:800;
-  letter-spacing:.2px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  text-decoration: none;
+  cursor: pointer;
 
-  text-decoration:none;
-  cursor:pointer;
-
-  -webkit-appearance:none;
-  appearance:none;
-  outline:none;
+  -webkit-appearance: none;
+  appearance: none;
 
   box-shadow: 0 10px 25px rgba(0,0,0,.35);
   transition: transform .08s ease, opacity .08s ease;
 }
 
-.btn:hover{ transform: translateY(-1px); opacity:.96; }
+.btn:hover{ transform: translateY(-1px); opacity: .96; }
 .btn:active{ transform: translateY(1px); }
 
-/* Viber brand */
+/* ===== Button icons ===== */
+.btn-icon{
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  filter: invert(1);
+}
+
+.btn:hover .btn-icon{
+  filter: invert(1) brightness(1.2);
+}
+
+/* ===== Brand buttons (Contacts) ===== */
+.contacts-actions .btn{
+  width: 100%;
+}
+
+/* Facebook */
+.btn.facebook{ background:#1877f2; }
+
+/* Instagram */
+.btn.instagram{
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+}
+
+/* TikTok */
+.btn.tiktok{ background:#000; }
+
+/* Google Review */
+.btn.google{
+  background: linear-gradient(45deg, #4285f4, #34a853, #fbbc05, #ea4335);
+}
+
+/* Google Maps */
+.btn.maps{ background:#1a73e8; }
+
+/* Waze */
+.btn.waze{
+  background:#33ccff;
+  color:#000;
+}
+.btn.waze .btn-icon{ filter:none; }
+
+/* Viber */
 .btn.viber{
   background: linear-gradient(135deg, #8f5bff, #6d3df0);
   border-color: rgba(255,255,255,.18);
