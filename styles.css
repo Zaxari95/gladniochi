@@ -861,3 +861,26 @@ header img {
   color: rgba(255,255,255,.85);
   opacity: .95;
 }
+
+/* Подкатегории като Водка / Джин / Ракия / Узо / Текила / Ром */
+.menu-subcat-title{
+  margin: 22px 0 12px;
+  font-size: 24px;          /* ГОЛЯМО заглавие */
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: .3px;
+}
+
+/* Лек разделител под заглавието */
+.menu-subcat-title::after{
+  content: "";
+  display: block;
+  height: 2px;
+  width: 60px;
+  margin-top: 10px;
+  background: linear-gradient(
+    90deg,
+    var(--accent),
+    transparent
+  );
+}
