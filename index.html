@@ -272,25 +272,58 @@
 </section>
 
 <section id="contacts" class="section card">
-    
-  <section id="contacts" class="section card">
+  <div class="section-head">
     <h2>Контакти</h2>
+    <p class="muted">Свържи се с нас или ела на място — очакваме те.</p>
+  </div>
 
-    <div class="grid-2">
-      <div class="info">
-        <h3>Връзка</h3>
-        <p>📞 <a class="link" href="tel:+359895213002">0895 213 002</a></p>
-        <p>📍 гр. Дупница, ул. Никола Малашевски 9</p>
+  <div class="contacts-grid">
+    <!-- Лява карта: Връзка -->
+    <div class="contacts-card">
+      <div class="contacts-card-title">Връзка</div>
+
+      <a class="contact-row" href="tel:+359895213002">
+        <span class="contact-ico">📞</span>
+        <span class="contact-main">0895 213 002</span>
+        <span class="contact-badge">Обади се</span>
+      </a>
+
+      <a class="contact-row" href="https://maps.google.com/?q=гр.%20Дупница,%20ул.%20Никола%20Малашевски%209" target="_blank" rel="noopener">
+        <span class="contact-ico">📍</span>
+        <span class="contact-main">гр. Дупница, ул. Никола Малашевски 9</span>
+        <span class="contact-badge">Карти</span>
+      </a>
+    </div>
+
+    <!-- Дясна карта: Работно време -->
+    <div class="contacts-card">
+      <div class="contacts-card-title">Работно време</div>
+
+      <div class="hours">
+        <div class="hours-row">
+          <span class="hours-day">Пон–Чет</span>
+          <span class="hours-time">10:00–23:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Пет</span>
+          <span class="hours-time">10:00–00:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Съб</span>
+          <span class="hours-time">10:00–02:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Нед</span>
+          <span class="hours-time">10:00–23:00</span>
+        </div>
       </div>
-      <div class="info">
-        <h3>Работно време</h3>
-        <p>
-          Пон–Чет: 10:00–23:00<br>
-          Пет: 10:00–00:00<br>
-          Съб: 10:00–02:00
-        </p>
+
+      <div class="hours-note">
+        ⏳ Последна поръчка: ~30 мин. преди затваряне
       </div>
     </div>
+  </div>
+</section>
 
     <div class="contacts-actions">
       <a class="btn secondary" 
