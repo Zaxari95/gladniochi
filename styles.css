@@ -1021,3 +1021,7 @@ header img {
   height: 22px;
   flex-shrink: 0;
 }
+
+.btn-icon {
+  filter: invert(1);
+}
