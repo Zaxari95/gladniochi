@@ -19,6 +19,8 @@ body {
   color: var(--text);
 }
 
+ul { padding-left: 18px; }
+
 /* ================= HEADER ================= */
 
 .header {
@@ -38,9 +40,12 @@ body {
 }
 
 /* ЛОГО */
-.header-logo img {
+.header-logo img,
+.logo {
   height: 70px;
   margin-bottom: 12px;
+  filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(255,255,255,0.35));
+  opacity: 1;
 }
 
 /* НАВИГАЦИЯ */
@@ -61,21 +66,20 @@ body {
 
 .nav a:hover {
   opacity: 1;
-  color: #7a3cff;
+  color: var(--accent);
 }
 
 /* DESKTOP */
 @media (min-width: 768px) {
-  .header-logo img {
+  .header-logo img,
+  .logo {
     height: 80px;
   }
-
-  .nav a {
-    font-size: 16px;
-  }
+  .nav a { font-size: 16px; }
 }
 
 /* ================= HERO ================= */
+
 .hero {
   text-align: center;
   padding: 86px 20px 72px;
@@ -97,38 +101,15 @@ body {
   margin: 0;
 }
 
-.hero-buttons {
-  margin-top: 22px;
-}
+.hero-buttons { margin-top: 22px; }
 
-/* ================= BUTTONS ================= */
-.btn {
-  display: inline-block;
-  margin: 10px 8px;
-  padding: 12px 22px;
-  background: var(--accent);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 999px;
-  font-weight: 800;
-  letter-spacing: .2px;
-  border: 1px solid rgba(255,255,255,.08);
-  box-shadow: 0 10px 25px rgba(0,0,0,.35);
-  transition: transform .08s ease, opacity .08s ease;
-}
-
-.btn:hover { transform: translateY(-1px); opacity: .96; }
-
-.btn.secondary {
-  background: rgba(255,255,255,.10);
-  color: #fff;
-}
-
-.btn.viber {
-  background: var(--accent);
+@media (max-width: 520px) {
+  .hero h1 { font-size: 34px; }
+  .hero p { font-size: 16px; }
 }
 
 /* ================= SECTIONS ================= */
+
 .section {
   max-width: 1100px;
   margin: auto;
@@ -146,7 +127,103 @@ body {
   line-height: 1.55;
 }
 
+/* ================= HELPERS ================= */
+
+.muted { color: rgba(255,255,255,.78); }
+.link { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+.card{
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.menu-panel{
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 10px 16px;
+}
+
+/* ================= BUTTONS (GLOBAL) ================= */
+/* Работи за <a> и <button> – НЕ чупи layout */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  margin: 10px 8px;
+  padding: 12px 22px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+
+  background: var(--accent);
+  color:#fff;
+
+  font-weight: 800;
+  letter-spacing: .2px;
+  text-decoration: none;
+  cursor: pointer;
+
+  -webkit-appearance:none;
+  appearance:none;
+  outline:none;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,.35);
+  transition: transform .08s ease, opacity .08s ease, box-shadow .15s ease;
+}
+
+.btn:hover { transform: translateY(-1px); opacity: .96; }
+.btn:active{ transform: translateY(1px); }
+
+.btn.secondary {
+  background: rgba(255,255,255,.10);
+}
+
+/* Икони в бутоните */
+.btn-icon{
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  filter: invert(1);
+}
+
+.btn:hover .btn-icon{
+  filter: invert(1) brightness(1.2);
+}
+
+/* ================= BRAND BUTTONS (Contacts) ================= */
+.btn.facebook{ background:#1877f2; }
+
+.btn.instagram{
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+}
+
+.btn.tiktok{ background:#000; }
+
+.btn.google{
+  background: linear-gradient(45deg, #4285f4, #34a853, #fbbc05, #ea4335);
+}
+
+.btn.maps{ background:#1a73e8; }
+
+.btn.waze{
+  background:#33ccff;
+  color:#000;
+}
+.btn.waze .btn-icon{ filter:none; }
+
+.btn.viber{
+  background: linear-gradient(135deg, #8f5bff, #6d3df0);
+  border-color: rgba(255,255,255,.18);
+  box-shadow: 0 12px 28px rgba(120,60,255,.25);
+}
+
 /* ================= MENU / TABS ================= */
+
 #tabs {
   margin: 8px 0 18px;
   padding: 10px;
@@ -176,6 +253,7 @@ body {
 #tabs button.active { background: var(--accent); border-color: rgba(255,255,255,.16); }
 
 /* ================= DROPDOWN (MOBILE) ================= */
+
 select {
   width: 100%;
   padding: 12px 14px;
@@ -196,7 +274,8 @@ select:focus {
   select { display: none; }
 }
 
-/* ================= CATEGORY TITLE (NEW) ================= */
+/* ================= MENU TITLES + ITEMS ================= */
+
 .menu-cat-title {
   margin: 26px 0 10px;
   padding: 10px 14px;
@@ -207,7 +286,24 @@ select:focus {
   letter-spacing: .2px;
 }
 
-/* ================= MENU ITEM ================= */
+/* Подкатегории: Водка / Джин / Ракия ... */
+.menu-subcat-title{
+  margin: 22px 0 12px;
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: .3px;
+}
+
+.menu-subcat-title::after{
+  content: "";
+  display: block;
+  height: 2px;
+  width: 60px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
 .menu-item {
   padding: 14px 0;
   border-bottom: 1px solid var(--line);
@@ -244,14 +340,8 @@ select:focus {
   font-size: 14px;
 }
 
-/* ================= MOBILE MENU LAYOUT ================= */
+/* MOBILE MENU LAYOUT */
 @media (max-width: 520px) {
-  .header { padding: 12px 14px; }
-  nav a { margin-left: 12px; font-size: 13px; }
-
-  .hero h1 { font-size: 34px; }
-  .hero p { font-size: 16px; }
-
   .menu-item .row {
     flex-direction: column;
     gap: 6px;
@@ -260,60 +350,8 @@ select:focus {
   .price { white-space: normal; }
 }
 
-/* ================= SMALL POLISH ================= */
-ul { padding-left: 18px; }
+/* ================= HERO SLIDESHOW ================= */
 
-/* ===== LOGO WHITE + GLOW ===== */
-.logo {
-  height: 52px;
-  filter: brightness(0) invert(1);
-  opacity: 1;
-  filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(255,255,255,0.35));
-}
-
-/* ===== Premium helpers ===== */
-.muted { color: rgba(255,255,255,.78); }
-.link { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
-
-.section-head { margin-bottom: 14px; }
-.btn-row { display:flex; flex-wrap:wrap; gap:10px; margin-top: 12px; }
-
-.card{
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 18px;
-  padding: 22px;
-}
-
-.menu-panel{
-  background: rgba(0,0,0,.18);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 16px;
-  padding: 10px 16px;
-}
-
-/* header actions */
-.header-left{ display:flex; align-items:center; gap:12px; }
-.header-actions{ display:flex; gap:10px; align-items:center; }
-.chip{
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.10);
-  border: 1px solid rgba(255,255,255,.10);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 800;
-  font-size: 13px;
-}
-.chip-viber{ background: rgba(122,60,255,.35); }
-
-/* Make logo white */
-.logo{
-  filter: brightness(0) invert(1);
-  opacity: 1;
-}
-
-/* ===== HERO SLIDESHOW ===== */
 .hero-slideshow{
   position: relative;
   min-height: 520px;
@@ -358,6 +396,7 @@ ul { padding-left: 18px; }
   flex-wrap:wrap;
   justify-content:center;
 }
+
 .badge{
   padding: 8px 12px;
   border-radius: 999px;
@@ -368,132 +407,9 @@ ul { padding-left: 18px; }
   font-size: 13px;
 }
 
-/* ===== Gallery ===== */
-.gallery{
-  display:grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-.g-item{
-  display:block;
-  border-radius: 16px;
-  overflow:hidden;
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.04);
-}
-.g-item img{
-  width:100%;
-  height: 320px;
-  object-fit: cover;
-  display:block;
-  transition: transform .25s ease;
-}
-.g-item:hover img{ transform: scale(1.03); }
+/* ================= Instagram-style swipe gallery ================= */
 
-@media (max-width: 760px){
-  .gallery{ grid-template-columns: 1fr; }
-  .g-item img{ height: 240px; }
-  .header-actions{ display:none; } /* да не претрупва мобилно */
-}
-
-/* ===== Map ===== */
-.contacts-grid{
-  display:grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 16px;
-  align-items: stretch;
-}
-.map{
-  border-radius: 16px;
-  overflow:hidden;
-  border: 1px solid rgba(255,255,255,.10);
-  min-height: 280px;
-}
-.map iframe{
-  width:100%;
-  height: 100%;
-  min-height: 280px;
-  border:0;
-}
-
-@media (max-width: 900px){
-  .contacts-grid{ grid-template-columns: 1fr; }
-}
-
-/* Menu category titles */
-.menu-cat-title{
-  margin: 26px 0 10px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,.10);
-  font-size: 18px;
-  letter-spacing: .2px;
-  color: rgba(255,255,255,.95);
-}
-.menu-item{
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-.menu-item .price{
-  font-weight: 700;
-  opacity: .92;
-}
-
-/* === WHITE LOGO FIX === */
-header img.logo {
-  filter: brightness(0) invert(1);
-}
-
-header img {
-  filter: brightness(0) invert(1);
-}
-
-/* ===== FIX: Gallery layout (no overflow, nice grid) ===== */
-.gallery{
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 14px;
-}
-
-.gallery img{
-  width: 100%;
-  height: 220px;          /* височина на картинката */
-  display: block;
-  object-fit: cover;      /* запълва красиво без да се разтяга */
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.04);
-}
-
-/* ако ползваш <a class="g-item"> */
-.g-item{
-  display: block;
-  overflow: hidden;
-  border-radius: 14px;
-}
-
-.g-item img{
-  transition: transform .25s ease;
-}
-
-.g-item:hover img{
-  transform: scale(1.03);
-}
-
-/* Mobile: 1 колона */
-@media (max-width: 760px){
-  .gallery{
-    grid-template-columns: 1fr;
-  }
-  .gallery img{
-    height: 260px;
-  }
-}
-
-/* ===== Instagram-style swipe gallery ===== */
-.ig-wrap{
-  margin-top: 14px;
-}
+.ig-wrap{ margin-top: 14px; }
 
 .ig-slider{
   display: grid;
@@ -524,10 +440,9 @@ header img {
 .ig-item img{
   width: 100%;
   height: 420px;
-  object-fit: contain;         /* показва цялата снимка */
-  background: rgba(0,0,0,.35); /* фон, ако има “ленти” */
+  object-fit: contain;
+  background: rgba(0,0,0,.35);
   display: block;
-}
 }
 
 /* dots */
@@ -554,21 +469,13 @@ header img {
   transform: scale(1.15);
 }
 
-/* Desktop: по-широки карти */
 @media (min-width: 900px){
   .ig-slider{ grid-auto-columns: 52%; }
   .ig-item img{ height: 420px; }
 }
 
-@media (max-width: 760px){
-  .g-item img{
-    height: 260px;              /* можеш 240/260/280 */
-    object-fit: contain;         /* НЕ реже на телефон */
-    background: rgba(0,0,0,.35); /* ако има “ленти” */
-  }
-}
+/* ================= GALLERY SWIPE (with arrows + dots) ================= */
 
-/* ===== Gallery swipe (Instagram style) ===== */
 .gallery-wrap{
   position: relative;
   margin-top: 14px;
@@ -619,7 +526,7 @@ header img {
   font-size: 22px;
   font-weight: 900;
   cursor: pointer;
-  display: none; /* показваме ги само на desktop */
+  display: none; /* само desktop */
 }
 .g-prev{ left: 6px; }
 .g-next{ right: 6px; }
@@ -635,6 +542,7 @@ header img {
   gap: 8px;
   margin-top: 10px;
 }
+
 .g-dot{
   width: 7px;
   height: 7px;
@@ -642,6 +550,7 @@ header img {
   background: rgba(255,255,255,.25);
   border: 1px solid rgba(255,255,255,.10);
 }
+
 .g-dot.active{
   background: rgba(122,60,255,.95);
   border-color: rgba(122,60,255,.60);
@@ -649,11 +558,8 @@ header img {
 
 /* ================= REVIEWS ================= */
 
-.reviews-section {
-  margin-top: 40px;
-}
+.reviews-section { margin-top: 40px; }
 
-/* ----- HEADER ----- */
 .reviews-head {
   display: flex;
   flex-direction: column;
@@ -677,7 +583,6 @@ header img {
   width: fit-content;
 }
 
-/* Desktop – заглавие и бутон на един ред */
 @media (min-width: 720px) {
   .reviews-head {
     flex-direction: row;
@@ -686,12 +591,8 @@ header img {
   }
 }
 
-/* ----- SLIDER WRAPPER ----- */
-.reviews-wrapper {
-  position: relative;
-}
+.reviews-wrapper { position: relative; }
 
-/* ----- TRACK (SWIPE) ----- */
 .reviews-track {
   display: flex;
   gap: 14px;
@@ -699,17 +600,10 @@ header img {
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 10px;
-}
-
-/* hide scrollbar */
-.reviews-track::-webkit-scrollbar {
-  display: none;
-}
-.reviews-track {
   scrollbar-width: none;
 }
+.reviews-track::-webkit-scrollbar { display: none; }
 
-/* ----- CARD ----- */
 .review-card {
   flex: 0 0 85%;
   scroll-snap-align: start;
@@ -719,25 +613,10 @@ header img {
   padding: 16px;
 }
 
-/* Tablet */
-@media (min-width: 860px) {
-  .review-card {
-    flex: 0 0 48%;
-  }
-}
+@media (min-width: 860px) { .review-card { flex: 0 0 48%; } }
+@media (min-width: 1180px){ .review-card { flex: 0 0 32%; } }
 
-/* Desktop */
-@media (min-width: 1180px) {
-  .review-card {
-    flex: 0 0 32%;
-  }
-}
-
-/* ----- CONTENT ----- */
-.review-stars {
-  font-size: 18px;
-  margin-bottom: 8px;
-}
+.review-stars { font-size: 18px; margin-bottom: 8px; }
 
 .review-text {
   margin: 0;
@@ -745,7 +624,6 @@ header img {
   color: var(--muted);
 }
 
-/* Clamp text on mobile */
 @media (max-width: 720px) {
   .review-text {
     display: -webkit-box;
@@ -768,7 +646,6 @@ header img {
   opacity: 0.85;
 }
 
-/* ----- READ MORE (mobile only) ----- */
 .review-more {
   display: none;
   margin-top: 10px;
@@ -780,13 +657,8 @@ header img {
   font-weight: 700;
 }
 
-@media (max-width: 720px) {
-  .review-more {
-    display: inline-block;
-  }
-}
+@media (max-width: 720px) { .review-more { display: inline-block; } }
 
-/* ----- DOTS ----- */
 .reviews-dots {
   display: flex;
   justify-content: center;
@@ -801,96 +673,28 @@ header img {
   background: rgba(255,255,255,.25);
 }
 
-.reviews-dots span.active {
-  background: var(--accent);
-}
+.reviews-dots span.active { background: var(--accent); }
 
-/* === SOCIAL BUTTONS === */
+/* ================= CONTACTS (Premium) ================= */
+
 .contacts-actions{
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
-
-.contacts-actions .btn{
-  min-width: 160px;
-  text-align: center;
-}
-
-/* Mobile */
 @media (max-width: 520px){
-  .contacts-actions .btn{
-    width: 100%;
-  }
+  .contacts-actions .btn{ width: 100%; }
 }
 
-/* ===== SOCIAL ICONS (round) ===== */
-.social-icons{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  align-items:center;
-}
-
-.social-icon{
-  width:42px;
-  height:42px;
-  border-radius:999px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-  font-size:20px;
-  color:#fff;
-  background: rgba(255,255,255,.10);
-  border: 1px solid rgba(255,255,255,.12);
-  transition: transform .10s ease, opacity .10s ease;
-}
-
-.social-icon:hover{ transform: translateY(-1px); opacity:.95; }
-
-.social-icon.fb{ background: rgba(24,119,242,.22); }
-.social-icon.ig{ background: rgba(225,48,108,.18); }
-.social-icon.tt{ background: rgba(0,0,0,.18); }
-
-/* ===== Menu subcategories (Напитки / Алкохол / Уиски и т.н.) ===== */
-.menu-subcat-title{
-  margin: 14px 0 8px;
-  font-size: 15px;
-  font-weight: 900;
-  color: rgba(255,255,255,.85);
-  opacity: .95;
-}
-
-/* Подкатегории като Водка / Джин / Ракия / Узо / Текила / Ром */
-.menu-subcat-title{
-  margin: 22px 0 12px;
-  font-size: 24px;          /* ГОЛЯМО заглавие */
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: .3px;
-}
-
-/* Лек разделител под заглавието */
-.menu-subcat-title::after{
-  content: "";
-  display: block;
-  height: 2px;
-  width: 60px;
-  margin-top: 10px;
-  background: linear-gradient(
-    90deg,
-    var(--accent),
-    transparent
-  );
-}
-
-/* ===== Contacts (nicer layout) ===== */
+/* Единствена contacts-grid дефиниция (1 колона mobile, 2 колони desktop) */
 .contacts-grid{
   display: grid;
   grid-template-columns: 1fr;
   gap: 14px;
   margin-top: 14px;
+}
+@media (min-width: 860px){
+  .contacts-grid{ grid-template-columns: 1fr 1fr; }
 }
 
 .contacts-card{
@@ -970,9 +774,7 @@ header img {
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
 
-.hours-row:last-child{
-  border-bottom: 0;
-}
+.hours-row:last-child{ border-bottom: 0; }
 
 .hours-day{
   font-weight: 900;
@@ -984,107 +786,24 @@ header img {
   color: rgba(255,255,255,.95);
 }
 
-.hours-note{
-  margin-top: 10px;
-  font-size: 13px;
-  color: rgba(255,255,255,.70);
-  padding: 10px 12px;
-  border-radius: 14px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.06);
-}
-
-/* Desktop: 2 колони */
-@media (min-width: 860px){
-  .contacts-grid{
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 .hours-row.closed{
   background: rgba(255,80,80,.08);
 }
-
 .hours-row.closed .hours-time{
   color: #ff7a7a;
   font-weight: 900;
 }
 
-/* ===== Buttons (GLOBAL) ===== */
-.btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-
-  padding: 12px 22px;
-  border-radius: 999px;
-
-  border: 1px solid rgba(255,255,255,.12);
-  background: var(--accent);
-  color: #fff;
-
-  font-weight: 800;
-  letter-spacing: .2px;
-  text-decoration: none;
-  cursor: pointer;
-
-  -webkit-appearance: none;
-  appearance: none;
-
-  box-shadow: 0 10px 25px rgba(0,0,0,.35);
-  transition: transform .08s ease, opacity .08s ease;
+/* Map */
+.map{
+  border-radius: 16px;
+  overflow:hidden;
+  border: 1px solid rgba(255,255,255,.10);
+  min-height: 280px;
 }
-
-.btn:hover{ transform: translateY(-1px); opacity: .96; }
-.btn:active{ transform: translateY(1px); }
-
-/* ===== Button icons ===== */
-.btn-icon{
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
-  filter: invert(1);
-}
-
-.btn:hover .btn-icon{
-  filter: invert(1) brightness(1.2);
-}
-
-/* ===== Brand buttons (Contacts) ===== */
-.contacts-actions .btn{
-  width: 100%;
-}
-
-/* Facebook */
-.btn.facebook{ background:#1877f2; }
-
-/* Instagram */
-.btn.instagram{
-  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
-}
-
-/* TikTok */
-.btn.tiktok{ background:#000; }
-
-/* Google Review */
-.btn.google{
-  background: linear-gradient(45deg, #4285f4, #34a853, #fbbc05, #ea4335);
-}
-
-/* Google Maps */
-.btn.maps{ background:#1a73e8; }
-
-/* Waze */
-.btn.waze{
-  background:#33ccff;
-  color:#000;
-}
-.btn.waze .btn-icon{ filter:none; }
-
-/* Viber */
-.btn.viber{
-  background: linear-gradient(135deg, #8f5bff, #6d3df0);
-  border-color: rgba(255,255,255,.18);
-  box-shadow: 0 12px 28px rgba(120,60,255,.25);
+.map iframe{
+  width:100%;
+  height: 100%;
+  min-height: 280px;
+  border:0;
 }
