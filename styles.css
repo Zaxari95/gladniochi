@@ -1000,3 +1000,12 @@ header img {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+.hours-row.closed{
+  background: rgba(255,80,80,.08);
+}
+
+.hours-row.closed .hours-time{
+  color: #ff7a7a;
+  font-weight: 900;
+}
