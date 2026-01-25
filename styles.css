@@ -884,3 +884,119 @@ header img {
     transparent
   );
 }
+
+/* ===== Contacts (nicer layout) ===== */
+.contacts-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.contacts-card{
+  border-radius: 18px;
+  padding: 14px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+.contacts-card-title{
+  font-size: 16px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  color: rgba(255,255,255,.92);
+  letter-spacing: .2px;
+}
+
+.contact-row{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 10px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: rgba(255,255,255,.92);
+  background: rgba(0,0,0,.12);
+  border: 1px solid rgba(255,255,255,.06);
+  margin-top: 10px;
+}
+
+.contact-row:hover{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.10);
+}
+
+.contact-ico{
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  flex: 0 0 34px;
+}
+
+.contact-main{
+  flex: 1;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.contact-badge{
+  font-size: 12px;
+  font-weight: 900;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.10);
+  color: rgba(255,255,255,.9);
+}
+
+/* Работно време */
+.hours{
+  margin-top: 6px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+.hours-row{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: rgba(0,0,0,.10);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.hours-row:last-child{
+  border-bottom: 0;
+}
+
+.hours-day{
+  font-weight: 900;
+  color: rgba(255,255,255,.88);
+}
+
+.hours-time{
+  font-weight: 900;
+  color: rgba(255,255,255,.95);
+}
+
+.hours-note{
+  margin-top: 10px;
+  font-size: 13px;
+  color: rgba(255,255,255,.70);
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+/* Desktop: 2 колони */
+@media (min-width: 860px){
+  .contacts-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+}
