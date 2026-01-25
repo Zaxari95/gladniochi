@@ -1036,3 +1036,61 @@ header img {
 .btn:hover .btn-icon {
   filter: invert(1) brightness(1.2);
 }
+
+/* ===== Brand buttons ===== */
+.btn.brand {
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+.btn.brand:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+/* Facebook */
+.btn.facebook {
+  background: #1877f2;
+}
+
+/* Instagram */
+.btn.instagram {
+  background: linear-gradient(45deg,
+    #f58529,
+    #dd2a7b,
+    #8134af,
+    #515bd4
+  );
+}
+
+/* TikTok */
+.btn.tiktok {
+  background: #000;
+}
+
+/* Google Review */
+.btn.google {
+  background: linear-gradient(45deg, #4285f4, #34a853, #fbbc05, #ea4335);
+}
+
+/* Google Maps */
+.btn.maps {
+  background: #1a73e8;
+}
+
+/* Waze */
+.btn.waze {
+  background: #33ccff;
+  color: #000;
+}
+
+.btn.waze .btn-icon {
+  filter: none;
+}
+
+/* Viber */
+.btn.viber {
+  background: #7360f2;
+}
