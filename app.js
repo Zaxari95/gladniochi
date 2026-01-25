@@ -214,6 +214,10 @@ const tabs = document.getElementById("tabs");
 const mobile = document.getElementById("mobileCategory");
 const content = document.getElementById("menuContent");
 
+if (!tabs || !mobile || !content) {
+  console.error("Missing menu elements:", { tabs, mobile, content });
+}
+
 function formatPrices(eur) {
   if (eur === null || eur === undefined) return `<span class="price">Цена: по запитване</span>`;
   const lv = (eur * RATE).toFixed(2);
