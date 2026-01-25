@@ -235,21 +235,47 @@ function render(sectionName) {
   const cats = Object.keys(section);
 
   cats.forEach(catName => {
+    const value = section[catName];
+
     // Заглавие на категория
     content.innerHTML += `<h3 class="menu-cat-title">${escapeHtml(catName)}</h3>`;
 
-    (section[catName] || []).forEach(i => {
-      const desc = i.desc ? `<div class="desc">${escapeHtml(i.desc)}</div>` : "";
-      content.innerHTML += `
-        <div class="menu-item">
-          <div class="row">
-            <b class="name">${escapeHtml(i.name)}</b>
-            ${formatPrices(i.price)}
+    // Ако е масив -> нормални артикули
+    if (Array.isArray(value)) {
+      value.forEach(i => {
+        const desc = i.desc ? `<div class="desc">${escapeHtml(i.desc)}</div>` : "";
+        content.innerHTML += `
+          <div class="menu-item">
+            <div class="row">
+              <b class="name">${escapeHtml(i.name)}</b>
+              ${formatPrices(i.price)}
+            </div>
+            ${desc}
           </div>
-          ${desc}
-        </div>
-      `;
-    });
+        `;
+      });
+      return;
+    }
+
+    // Ако е обект -> подкатегории
+    if (value && typeof value === "object") {
+      Object.keys(value).forEach(subName => {
+        content.innerHTML += `<h4 class="menu-subcat-title">${escapeHtml(subName)}</h4>`;
+
+        (value[subName] || []).forEach(i => {
+          const desc = i.desc ? `<div class="desc">${escapeHtml(i.desc)}</div>` : "";
+          content.innerHTML += `
+            <div class="menu-item">
+              <div class="row">
+                <b class="name">${escapeHtml(i.name)}</b>
+                ${formatPrices(i.price)}
+              </div>
+              ${desc}
+            </div>
+          `;
+        });
+      });
+    }
   });
 }
 
