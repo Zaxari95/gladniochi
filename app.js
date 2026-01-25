@@ -109,29 +109,30 @@ const menuData = {
 },
   
   "Напитки": {
-    "☕ Топли напитки": [
-      { name: "Кафе Kimbo", desc: "60 мл", price: 1.00 },
-      { name: "Капучино", desc: "180 мл", price: 1.60 },
-      { name: "Лате", desc: "180 мл", price: 1.60 },
-      { name: "Топъл шоколад", desc: "180 мл", price: 1.60 },
-      { name: "Чай", desc: "200 мл", price: 0.80 }
-    ],
+  "☕ Топли напитки": [
+    { name: "Кафе Kimbo", desc: "60 мл", price: 1.00 },
+    { name: "Капучино", desc: "180 мл", price: 1.60 },
+    { name: "Лате", desc: "180 мл", price: 1.60 },
+    { name: "Топъл шоколад", desc: "180 мл", price: 1.60 },
+    { name: "Чай", desc: "200 мл", price: 0.80 }
+  ],
 
-    "🧃 Безалкохолни напитки": [
-      { name: "Кока Кола", desc: "250 мл", price: 1.60 },
-      { name: "Фанта", desc: "250 мл", price: 1.60 },
-      { name: "Спрайт", desc: "250 мл", price: 1.60 },
-      { name: "Тоник", desc: "250 мл", price: 1.60 },
-      { name: "Тоник розов", desc: "250 мл", price: 1.60 },
-      { name: "Сода", desc: "250 мл", price: 1.40 },
-      { name: "Минерална вода", desc: "330 мл", price: 1.20 },
-      { name: "Минерална вода", desc: "750 мл", price: 2.10 },
-      { name: "Натурален сок BBB", desc: "250 мл", price: 1.60 },
-      { name: "Студен чай", desc: "250 мл", price: 1.60 },
-      { name: "Фрапе", desc: "400 мл", price: 2.10 },
-      { name: "Фрапе с вкус", desc: "400 мл", price: 2.50 }
-    ],
+  "🧃 Безалкохолни напитки": [
+    { name: "Кока Кола", desc: "250 мл", price: 1.60 },
+    { name: "Фанта", desc: "250 мл", price: 1.60 },
+    { name: "Спрайт", desc: "250 мл", price: 1.60 },
+    { name: "Тоник", desc: "250 мл", price: 1.60 },
+    { name: "Тоник розов", desc: "250 мл", price: 1.60 },
+    { name: "Сода", desc: "250 мл", price: 1.40 },
+    { name: "Минерална вода", desc: "330 мл", price: 1.20 },
+    { name: "Минерална вода", desc: "750 мл", price: 2.10 },
+    { name: "Натурален сок BBB", desc: "250 мл", price: 1.60 },
+    { name: "Студен чай", desc: "250 мл", price: 1.60 },
+    { name: "Фрапе", desc: "400 мл", price: 2.10 },
+    { name: "Фрапе с вкус", desc: "400 мл", price: 2.50 }
+  ],
 
+  "🍸 Алкохолни напитки": {
     "🥃 Уиски – Шотландско": [
       { name: "Гленфидих 12 г.", desc: "50 мл", price: 7.20 },
       { name: "Макалън 12 г.", desc: "50 мл", price: 9.50 },
@@ -207,7 +208,7 @@ const menuData = {
       { name: "Бакарди Бял", desc: "50 мл", price: 2.10 }
     ]
   }
-};
+}
 
 const tabs = document.getElementById("tabs");
 const mobile = document.getElementById("mobileCategory");
