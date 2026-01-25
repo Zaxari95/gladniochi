@@ -208,7 +208,7 @@ const menuData = {
       { name: "Бакарди Бял", desc: "50 мл", price: 2.10 }
     }
   }
-};
+}
 
 const tabs = document.getElementById("tabs");
 const mobile = document.getElementById("mobileCategory");
