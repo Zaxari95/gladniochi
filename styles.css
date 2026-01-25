@@ -1094,3 +1094,48 @@ header img {
 .btn.viber {
   background: #7360f2;
 }
+
+/* Buttons (works for <a> and <button>) */
+.btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+
+  width:100%;
+  padding:14px 18px;
+  border-radius:999px;
+
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.08);
+
+  color:#fff;
+  font-weight:800;
+  letter-spacing:.2px;
+
+  text-decoration:none;
+  cursor:pointer;
+
+  -webkit-appearance:none;
+  appearance:none;
+  outline:none;
+}
+
+.btn:active{
+  transform: translateY(1px);
+}
+
+/* Icon */
+.btn-icon{
+  width:22px;
+  height:22px;
+  flex-shrink:0;
+  filter: invert(1);
+}
+
+/* Viber brand */
+.btn.viber{
+  background: linear-gradient(135deg, #8f5bff, #6d3df0);
+  border-color: rgba(255,255,255,.18);
+  box-shadow: 0 12px 28px rgba(120,60,255,.25);
+}
