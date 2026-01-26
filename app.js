@@ -630,3 +630,16 @@ function sendReservationToViber(e) {
   scrollCardTo(0, false); // без анимация при зареждане
   startAuto();
 })();
+
+// ✅ FIX: не позволявай "smooth scroll" код да хваща tel: и viber://
+(function () {
+  const stopSteal = (e) => {
+    // спира други click listeners (които правят preventDefault/scroll)
+    e.stopImmediatePropagation();
+    // НЕ правим preventDefault -> оставяме браузъра да отвори tel/viber нормално
+  };
+
+  document.querySelectorAll('a[href^="tel:"], a[href^="viber://"]').forEach(a => {
+    a.addEventListener('click', stopSteal, true); // capture=true е важно
+  });
+})();
