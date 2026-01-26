@@ -807,3 +807,76 @@ select:focus {
   min-height: 280px;
   border:0;
 }
+
+/* ===== HERO CTA (top buttons) ===== */
+.hero-cta{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  max-width: 620px;
+  margin: 18px auto 0;
+}
+
+.hero-cta .btn{
+  width: 100%;
+  margin: 0;                 /* маха стария margin от .btn */
+  justify-content: center;
+}
+
+/* Mobile: 1 колона */
+@media (max-width: 520px){
+  .hero-cta{ grid-template-columns: 1fr; }
+}
+
+/* Ако някоя икона е “черна” и не се вижда – това помага */
+.hero-cta .btn-icon{
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+/* ===== Brand colors (Hero buttons) ===== */
+
+/* Меню (JustEat vibe) */
+.btn-menu{
+  background: linear-gradient(135deg, #ff7a18, #ff3d2e);
+  border-color: rgba(255,255,255,.16);
+  box-shadow: 0 12px 28px rgba(255,80,40,.22);
+}
+
+/* Запази маса (Calendar / Reservation vibe) */
+.btn-reserve{
+  background: linear-gradient(135deg, #2f80ff, #00c2ff);
+  border-color: rgba(255,255,255,.16);
+  box-shadow: 0 12px 28px rgba(0,140,255,.20);
+}
+
+/* Позвъни (зелено) */
+.btn-call{
+  background: linear-gradient(135deg, #17c964, #0ea54f);
+  border-color: rgba(255,255,255,.16);
+  box-shadow: 0 12px 28px rgba(20,200,100,.18);
+}
+
+/* Вайбър (оставяме вайбър) */
+.btn-viber{
+  background: linear-gradient(135deg, #8f5bff, #6d3df0);
+  border-color: rgba(255,255,255,.18);
+  box-shadow: 0 12px 28px rgba(120,60,255,.25);
+}
+
+/* Иконите: по подразбиране бели (invert), освен ако SVG вече е цветно */
+.btn-menu .btn-icon,
+.btn-reserve .btn-icon,
+.btn-viber .btn-icon{
+  filter: invert(1);
+}
+
+/* ако viber.svg е цветно и изглежда грозно инвертирано -> махни invert само за него */
+.btn-viber .btn-icon{
+  /* ако иконата е цветна, пусни това: */
+  /* filter: none; */
+}
+
+/* Малък emoji helper за call */
+.btn-emoji{ font-size: 20px; line-height: 1; }
