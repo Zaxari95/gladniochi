@@ -625,6 +625,7 @@ function bindReservation() {
 (function boot() {
   const run = () => {
     initMenu();
+    initMenuSearch(); // 🔍 ТЪРСАЧКА
     setYear();
     bindReservation();
   };
