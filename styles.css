@@ -1023,3 +1023,107 @@ select:focus {
   appearance: none;
   -webkit-appearance: none;
 }
+
+/* =========================
+   RESERVATIONS – PREMIUM FORM
+   (put at the VERY bottom of styles.css)
+========================= */
+
+.form{
+  margin-top: 16px;
+}
+
+.form label{
+  display: grid;
+  gap: 8px;
+  font-weight: 900;
+  letter-spacing: .2px;
+  color: rgba(255,255,255,.92);
+}
+
+/* Grid */
+.form-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+/* Desktop: 2 колони */
+@media (min-width: 860px){
+  .form-grid{
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+/* Inputs/textarea – един стил за всички */
+.form input,
+.form textarea{
+  width: 100%;
+  box-sizing: border-box;
+
+  background: rgba(0,0,0,.22);
+  color: #fff;
+
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+
+  padding: 14px 14px;
+  min-height: 48px;
+
+  outline: none;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+  transition: border-color .15s ease, box-shadow .15s ease, transform .08s ease;
+}
+
+/* iOS fix: date/time понякога “излизат” ако нямат правилни line-height/appearance */
+.form input[type="date"],
+.form input[type="time"]{
+  -webkit-appearance: none;
+  appearance: none;
+  line-height: 1.2;
+  padding-right: 14px;
+}
+
+/* Placeholder */
+.form input::placeholder,
+.form textarea::placeholder{
+  color: rgba(255,255,255,.45);
+}
+
+/* Focus */
+.form input:focus,
+.form textarea:focus{
+  border-color: rgba(122,60,255,.60);
+  box-shadow: 0 0 0 4px rgba(122,60,255,.16);
+}
+
+/* Textarea */
+.form textarea{
+  min-height: 110px;
+  resize: vertical;
+  padding: 14px 14px;
+}
+
+/* Малък helper текст под label ако решиш да добавяш */
+.form .hint{
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,.65);
+  margin-top: -2px;
+}
+
+/* Button spacing */
+#sendReservationBtn{
+  width: 100%;
+  margin-top: 14px !important;
+  padding: 14px 18px;
+  border-radius: 999px;
+}
+
+/* По-стегнато на мобилен */
+@media (max-width: 520px){
+  .form-grid{ gap: 12px; }
+  .form input, .form textarea{ border-radius: 14px; }
+}
