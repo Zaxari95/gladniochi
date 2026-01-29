@@ -914,3 +914,82 @@ select:focus {
   border-color: rgba(122,60,255,.6);
   box-shadow: 0 0 0 3px rgba(122,60,255,.15);
 }
+
+/* =========================
+   RESERVATIONS FORM – FIX
+   (put at VERY bottom)
+========================= */
+
+#reservationForm{
+  margin-top: 14px;
+}
+
+/* 2 колони на desktop, 1 колона на mobile */
+#reservationForm .form-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* label над input (не на един ред) */
+#reservationForm label{
+  display: grid;
+  gap: 8px;
+  font-weight: 900;
+  color: rgba(255,255,255,.90);
+}
+
+/* inputs */
+#reservationForm input,
+#reservationForm textarea{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.22);
+  color: #fff;
+  outline: none;
+}
+
+/* placeholders */
+#reservationForm input::placeholder,
+#reservationForm textarea::placeholder{
+  color: rgba(255,255,255,.55);
+}
+
+/* focus */
+#reservationForm input:focus,
+#reservationForm textarea:focus{
+  border-color: rgba(122,60,255,.70);
+  box-shadow: 0 0 0 3px rgba(122,60,255,.16);
+}
+
+/* textarea */
+#reservationForm textarea{
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* button full width */
+#sendReservationBtn{
+  width: 100%;
+  margin: 12px 0 0;
+  padding: 14px 16px;
+  border-radius: 999px;
+  font-weight: 900;
+}
+
+/* desktop */
+@media (min-width: 860px){
+  #reservationForm .form-grid{
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 14px;
+  }
+
+  /* бележка + бутон на цял ред */
+  #reservationForm > label,
+  #sendReservationBtn{
+    grid-column: 1 / -1;
+  }
+}
