@@ -899,3 +899,18 @@ select:focus {
   font-size: 15px;
   justify-content: center;
 }
+
+#menuSearch{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  outline: none;
+}
+
+#menuSearch:focus{
+  border-color: rgba(122,60,255,.6);
+  box-shadow: 0 0 0 3px rgba(122,60,255,.15);
+}
