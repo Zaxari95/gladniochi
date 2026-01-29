@@ -332,7 +332,6 @@ function initMenuSearch() {
       .replace(/[\u0300-\u036f]/g, "")
       .trim();
 
-  // събираме всички елементи от менюто в един списък
   const allItems = [];
   Object.entries(menuData).forEach(([sectionName, section]) => {
     Object.entries(section).forEach(([catName, value]) => {
@@ -347,14 +346,13 @@ function initMenuSearch() {
   });
 
   function getCurrentSection() {
-    const activeTab = tabs?.querySelector("button.active")?.textContent;
-    return mobile?.value || activeTab || Object.keys(menuData)[0];
+    const activeTab = tabs && tabs.querySelector("button.active") ? tabs.querySelector("button.active").textContent : null;
+    return (mobile && mobile.value) || activeTab || Object.keys(menuData)[0];
   }
 
   function renderSearchResults(q) {
     const query = normalize(q);
 
-    // ако е празно търсенето -> показваме нормално менюто
     if (!query) {
       renderMenu(getCurrentSection(), content);
       return;
@@ -372,11 +370,13 @@ function initMenuSearch() {
       return;
     }
 
-    // групиране по секция
     const grouped = {};
-    hits.forEach(h => (grouped[h.sectionName] ||= []).push(h));
+    hits.forEach((h) => {
+      if (!grouped[h.sectionName]) grouped[h.sectionName] = [];
+      grouped[h.sectionName].push(h);
+    });
 
-    Object.keys(grouped).forEach(sectionName => {
+    Object.keys(grouped).forEach((sectionName) => {
       content.innerHTML += `<h3 class="menu-cat-title">${escapeHtml(sectionName)} – резултати</h3>`;
 
       grouped[sectionName].forEach(({ catName, subName, item }) => {
@@ -397,22 +397,22 @@ function initMenuSearch() {
     });
   }
 
-  // търсене с малък debounce
   let t = null;
   input.addEventListener("input", (e) => {
     clearTimeout(t);
     t = setTimeout(() => renderSearchResults(e.target.value), 120);
   });
 
-  // ако смениш таб/категория – чистим търсенето
   const resetSearch = () => {
     if (!input.value) return;
     input.value = "";
     renderMenu(getCurrentSection(), content);
   };
 
-  tabs?.addEventListener("click", resetSearch);
-  mobile?.addEventListener("change", resetSearch);
+  if (tabs) tabs.addEventListener("click", resetSearch);
+  if (mobile) mobile.addEventListener("change", resetSearch);
+
+  console.log("✅ menuSearch ready");
 }
 
 /* =========================
