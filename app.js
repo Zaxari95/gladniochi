@@ -269,7 +269,6 @@ function setActiveTab(btn) {
 
 /* =========================
    INIT MENU (FIXED)
-   - стартира само след DOMContentLoaded
 ========================= */
 function initMenu() {
   const tabs = document.getElementById("tabs");
@@ -312,6 +311,108 @@ function initMenu() {
     mobile.value = sections[0];
     renderMenu(sections[0], content);
   }
+}
+
+/* =========================
+   MENU SEARCH 🔍 (ADDED)
+========================= */
+function initMenuSearch() {
+  const input = document.getElementById("menuSearch");
+  const content = document.getElementById("menuContent");
+  const tabs = document.getElementById("tabs");
+  const mobile = document.getElementById("mobileCategory");
+
+  if (!input || !content) return;
+
+  const normalize = (s) =>
+    (s || "")
+      .toString()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
+
+  // събираме всички елементи от менюто в един списък
+  const allItems = [];
+  Object.entries(menuData).forEach(([sectionName, section]) => {
+    Object.entries(section).forEach(([catName, value]) => {
+      if (Array.isArray(value)) {
+        value.forEach((i) => allItems.push({ sectionName, catName, subName: null, item: i }));
+      } else if (value && typeof value === "object") {
+        Object.entries(value).forEach(([subName, arr]) => {
+          (arr || []).forEach((i) => allItems.push({ sectionName, catName, subName, item: i }));
+        });
+      }
+    });
+  });
+
+  function getCurrentSection() {
+    const activeTab = tabs?.querySelector("button.active")?.textContent;
+    return mobile?.value || activeTab || Object.keys(menuData)[0];
+  }
+
+  function renderSearchResults(q) {
+    const query = normalize(q);
+
+    // ако е празно търсенето -> показваме нормално менюто
+    if (!query) {
+      renderMenu(getCurrentSection(), content);
+      return;
+    }
+
+    const hits = allItems.filter(({ item }) => {
+      const hay = normalize(item.name + " " + (item.desc || ""));
+      return hay.includes(query);
+    });
+
+    content.innerHTML = "";
+
+    if (!hits.length) {
+      content.innerHTML = `<div class="menu-item"><b class="name">Няма резултати за “${escapeHtml(q)}”.</b></div>`;
+      return;
+    }
+
+    // групиране по секция
+    const grouped = {};
+    hits.forEach(h => (grouped[h.sectionName] ||= []).push(h));
+
+    Object.keys(grouped).forEach(sectionName => {
+      content.innerHTML += `<h3 class="menu-cat-title">${escapeHtml(sectionName)} – резултати</h3>`;
+
+      grouped[sectionName].forEach(({ catName, subName, item }) => {
+        const where = subName ? `${catName} / ${subName}` : `${catName}`;
+        const desc = item.desc ? `<div class="desc">${escapeHtml(item.desc)}</div>` : "";
+
+        content.innerHTML += `
+          <div class="menu-item">
+            <div class="row">
+              <b class="name">${escapeHtml(item.name)}</b>
+              ${formatPrices(item.price)}
+            </div>
+            <div class="desc">${escapeHtml(where)}</div>
+            ${desc}
+          </div>
+        `;
+      });
+    });
+  }
+
+  // търсене с малък debounce
+  let t = null;
+  input.addEventListener("input", (e) => {
+    clearTimeout(t);
+    t = setTimeout(() => renderSearchResults(e.target.value), 120);
+  });
+
+  // ако смениш таб/категория – чистим търсенето
+  const resetSearch = () => {
+    if (!input.value) return;
+    input.value = "";
+    renderMenu(getCurrentSection(), content);
+  };
+
+  tabs?.addEventListener("click", resetSearch);
+  mobile?.addEventListener("change", resetSearch);
 }
 
 /* =========================
@@ -620,7 +721,6 @@ function bindReservation() {
 
 /* =========================
    RUN ALL (важното!)
-   - гарантира, че менюто няма да "изчезва"
 ========================= */
 (function boot() {
   const run = () => {
