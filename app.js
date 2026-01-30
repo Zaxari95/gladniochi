@@ -289,6 +289,11 @@ function renderMenu(sectionName, contentEl) {
   contentEl.appendChild(wrap);
 }
 
+function setActiveTab(btn) {
+  document.querySelectorAll("#tabs button").forEach(x => x.classList.remove("active"));
+  btn.classList.add("active");
+}
+
 /* =========================
    INIT MENU (FIXED)
 ========================= */
