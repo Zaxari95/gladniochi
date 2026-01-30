@@ -1129,34 +1129,30 @@ select:focus {
 }
 
 /* =========================
-   RESERVATIONS – Sticky CTA (MOBILE)
+   RESERVATIONS – Sticky CTA (MOBILE) FIX
 ========================= */
 
-#reservations .form{
-  padding-bottom: 92px; /* място за sticky бутона */
-}
-
 @media (max-width: 520px){
+
+  #reservations .form{
+    padding-bottom: 56px; /* само колкото трябва */
+  }
+
   #sendReservationBtn{
     position: sticky;
-    bottom: 12px;
+    bottom: 10px;
     z-index: 50;
 
     width: 100%;
     margin: 0 !important;
 
-    box-shadow: 0 18px 40px rgba(0,0,0,.55);
+    box-shadow: 0 14px 32px rgba(0,0,0,.45);
   }
 
-  /* лек “fade” фон зад бутона да изглежда луксозно */
+  /* по-малък fade, без празно поле */
   #reservations .form::after{
     content:"";
-    position: sticky;
-    bottom: 0;
     display:block;
-    height: 72px;
-    margin-top: 12px;
-    background: linear-gradient(180deg, rgba(15,15,18,0), rgba(15,15,18,.92));
-    pointer-events: none;
+    height: 28px;
   }
 }
