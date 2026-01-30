@@ -1158,52 +1158,69 @@ select:focus {
 }
 
 /* =========================
-   MENU ACCORDION
+   MENU ACCORDION (PREMIUM)
 ========================= */
 
 .menu-acc{
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+/* самата “карта” на категорията */
+.menu-acc details{
+  background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.10);
   border-radius: 16px;
   overflow: hidden;
-  background: rgba(0,0,0,.18);
-  margin-top: 14px;
 }
 
-.menu-acc details{
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-.menu-acc details:last-child{ border-bottom: 0; }
-
+/* заглавие (кликаемо) */
 .menu-acc summary{
   list-style: none;
   cursor: pointer;
   padding: 14px 14px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 
   font-weight: 900;
-  color: rgba(255,255,255,.92);
-  background: linear-gradient(90deg, rgba(122,60,255,.16), rgba(255,255,255,.03));
+  letter-spacing: .2px;
+  color: rgba(255,255,255,.95);
+
+  background: linear-gradient(90deg, rgba(122,60,255,.18), rgba(255,255,255,.03));
+  border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
 .menu-acc summary::-webkit-details-marker{ display:none; }
 
-.menu-acc summary::after{
-  content: "▾";
-  opacity: .85;
+/* стрелка */
+.menu-acc summary .acc-arrow{
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.25);
+  display: grid;
+  place-items: center;
   font-size: 18px;
-  transition: transform .15s ease;
+  opacity: .95;
+  transition: transform .15s ease, opacity .15s ease;
 }
-.menu-acc details[open] summary::after{
+
+.menu-acc details[open] summary .acc-arrow{
   transform: rotate(180deg);
+  opacity: 1;
 }
 
+/* съдържание */
 .menu-acc .acc-body{
-  padding: 6px 14px 12px;
+  padding: 10px 14px 12px;
 }
 
-.menu-acc .menu-item{
-  padding: 12px 0;
+/* лека подложка за подкатегории (напр. Уиски…) */
+.menu-acc .menu-subcat-title{
+  margin-top: 16px;
 }
