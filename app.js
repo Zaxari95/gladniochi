@@ -218,16 +218,28 @@ function renderMenu(sectionName, contentEl) {
 
   const cats = Object.keys(section);
 
-  cats.forEach(catName => {
+  // контейнер за акордеона
+  const wrap = document.createElement("div");
+  wrap.className = "menu-acc";
+
+  cats.forEach((catName, idx) => {
     const value = section[catName];
 
-    contentEl.innerHTML += `<h3 class="menu-cat-title">${escapeHtml(catName)}</h3>`;
+    const details = document.createElement("details");
+    // ако искаш първата да е отворена по подразбиране -> махни коментара:
+    // if (idx === 0) details.open = true;
+
+    const summary = document.createElement("summary");
+    summary.textContent = catName;
+
+    const body = document.createElement("div");
+    body.className = "acc-body";
 
     // масив -> items
     if (Array.isArray(value)) {
       value.forEach(i => {
         const desc = i.desc ? `<div class="desc">${escapeHtml(i.desc)}</div>` : "";
-        contentEl.innerHTML += `
+        body.innerHTML += `
           <div class="menu-item">
             <div class="row">
               <b class="name">${escapeHtml(i.name)}</b>
@@ -237,17 +249,16 @@ function renderMenu(sectionName, contentEl) {
           </div>
         `;
       });
-      return;
     }
 
-    // обект -> подкатегории
-    if (value && typeof value === "object") {
+    // обект -> подкатегории (напр. Алкохолни напитки)
+    else if (value && typeof value === "object") {
       Object.keys(value).forEach(subName => {
-        contentEl.innerHTML += `<h4 class="menu-subcat-title">${escapeHtml(subName)}</h4>`;
+        body.innerHTML += `<h4 class="menu-subcat-title">${escapeHtml(subName)}</h4>`;
 
         (value[subName] || []).forEach(i => {
           const desc = i.desc ? `<div class="desc">${escapeHtml(i.desc)}</div>` : "";
-          contentEl.innerHTML += `
+          body.innerHTML += `
             <div class="menu-item">
               <div class="row">
                 <b class="name">${escapeHtml(i.name)}</b>
@@ -259,12 +270,24 @@ function renderMenu(sectionName, contentEl) {
         });
       });
     }
-  });
-}
 
-function setActiveTab(btn) {
-  document.querySelectorAll("#tabs button").forEach(x => x.classList.remove("active"));
-  btn.classList.add("active");
+    details.appendChild(summary);
+    details.appendChild(body);
+    wrap.appendChild(details);
+  });
+
+  // ✅ Само една отворена категория наведнъж
+  wrap.addEventListener("toggle", (e) => {
+    const opened = e.target;
+    if (!(opened instanceof HTMLDetailsElement)) return;
+    if (!opened.open) return;
+
+    wrap.querySelectorAll("details").forEach(d => {
+      if (d !== opened) d.open = false;
+    });
+  });
+
+  contentEl.appendChild(wrap);
 }
 
 /* =========================
