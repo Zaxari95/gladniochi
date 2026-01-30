@@ -1358,3 +1358,37 @@ select:focus {
 .btn-call-order:hover{
   filter: brightness(1.05);
 }
+
+/* CARD: Как да поръчаш – графит фон */
+.order-card,
+.how-to-order,
+.card-how-order {
+  background: linear-gradient(
+    180deg,
+    rgba(20,20,22,0.95),
+    rgba(12,12,14,0.95)
+  ) !important;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ЗЕЛЕН бутон – Поръчай по телефон */
+.btn-call-order{
+  background: linear-gradient(
+    90deg,
+    #22c55e,
+    #16a34a
+  ) !important;
+
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #ffffff !important;
+}
+
+/* махаме лилавите сенки ако има */
+.btn-call-order{
+  box-shadow: 0 10px 25px rgba(34,197,94,0.35);
+}
+
+/* hover / tap */
+.btn-call-order:hover{
+  filter: brightness(1.07);
+}
