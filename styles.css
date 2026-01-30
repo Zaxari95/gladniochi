@@ -1302,3 +1302,28 @@ select:focus {
   width: 100%;
   justify-content: center;
 }
+
+/* FIX: Viber button да не излиза извън картата */
+.order-card .btn,
+.order-card .btn-viber{
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+/* Ако някъде по сайта имаш .btn { width: ... } или transform - това го неутрализира */
+.order-card .btn{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  transform: none !important;
+  position: relative;
+  left: auto !important;
+  right: auto !important;
+}
+
+/* подсигуряване: нищо вътре в картата да не може да прелее */
+.order-card{
+  overflow: hidden;
+}
