@@ -216,28 +216,28 @@ function renderMenu(sectionName, contentEl) {
   const section = menuData[sectionName];
   if (!section) return;
 
-  const cats = Object.keys(section);
-
-  // контейнер за акордеона
   const wrap = document.createElement("div");
   wrap.className = "menu-acc";
 
-  cats.forEach((catName, idx) => {
+  const cats = Object.keys(section);
+
+  cats.forEach((catName) => {
     const value = section[catName];
 
     const details = document.createElement("details");
-    // ако искаш първата да е отворена по подразбиране -> махни коментара:
-    // if (idx === 0) details.open = true;
 
     const summary = document.createElement("summary");
-    summary.textContent = catName;
+    summary.innerHTML = `
+      <span>${escapeHtml(catName)}</span>
+      <span class="acc-arrow">▾</span>
+    `;
 
     const body = document.createElement("div");
     body.className = "acc-body";
 
     // масив -> items
     if (Array.isArray(value)) {
-      value.forEach(i => {
+      value.forEach((i) => {
         const desc = i.desc ? `<div class="desc">${escapeHtml(i.desc)}</div>` : "";
         body.innerHTML += `
           <div class="menu-item">
@@ -250,13 +250,12 @@ function renderMenu(sectionName, contentEl) {
         `;
       });
     }
-
-    // обект -> подкатегории (напр. Алкохолни напитки)
+    // обект -> подкатегории
     else if (value && typeof value === "object") {
-      Object.keys(value).forEach(subName => {
+      Object.keys(value).forEach((subName) => {
         body.innerHTML += `<h4 class="menu-subcat-title">${escapeHtml(subName)}</h4>`;
 
-        (value[subName] || []).forEach(i => {
+        (value[subName] || []).forEach((i) => {
           const desc = i.desc ? `<div class="desc">${escapeHtml(i.desc)}</div>` : "";
           body.innerHTML += `
             <div class="menu-item">
@@ -274,16 +273,18 @@ function renderMenu(sectionName, contentEl) {
     details.appendChild(summary);
     details.appendChild(body);
     wrap.appendChild(details);
-  });
 
-  // ✅ Само една отворена категория наведнъж
-  wrap.addEventListener("toggle", (e) => {
-    const opened = e.target;
-    if (!(opened instanceof HTMLDetailsElement)) return;
-    if (!opened.open) return;
+    // ✅ ВАЖНО: управляваме отваряне/затваряне ръчно (работи на всички телефони)
+    summary.addEventListener("click", (e) => {
+      e.preventDefault();
 
-    wrap.querySelectorAll("details").forEach(d => {
-      if (d !== opened) d.open = false;
+      const willOpen = !details.open;
+
+      // затваряме всички други
+      wrap.querySelectorAll("details").forEach((d) => (d.open = false));
+
+      // отваряме само избрания ако трябва
+      details.open = willOpen;
     });
   });
 
