@@ -217,7 +217,7 @@ function renderMenu(sectionName, contentEl) {
   if (!section) return;
 
   const wrap = document.createElement("div");
-  wrap.className = "menu-acc";
+  wrap.className = "menu-acc-wrap";
 
   const cats = Object.keys(section);
 
@@ -225,15 +225,17 @@ function renderMenu(sectionName, contentEl) {
     const value = section[catName];
 
     const details = document.createElement("details");
+    details.className = "menu-acc";
 
     const summary = document.createElement("summary");
+    summary.className = "menu-acc-head";
     summary.innerHTML = `
-      <span>${escapeHtml(catName)}</span>
-      <span class="acc-arrow">▾</span>
+      <span class="menu-acc-title">${escapeHtml(catName)}</span>
+      <span class="menu-acc-chevron">▾</span>
     `;
 
     const body = document.createElement("div");
-    body.className = "acc-body";
+    body.className = "menu-acc-body";
 
     // масив -> items
     if (Array.isArray(value)) {
@@ -274,17 +276,13 @@ function renderMenu(sectionName, contentEl) {
     details.appendChild(body);
     wrap.appendChild(details);
 
-    // ✅ ВАЖНО: управляваме отваряне/затваряне ръчно (работи на всички телефони)
-    summary.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      const willOpen = !details.open;
-
-      // затваряме всички други
-      wrap.querySelectorAll("details").forEach((d) => (d.open = false));
-
-      // отваряме само избрания ако трябва
-      details.open = willOpen;
+    // ✅ ВАЖНО: ползваме "toggle" (а не click+preventDefault)
+    // така работи стабилно след всеки нов render (Основно/Пици/Напитки)
+    details.addEventListener("toggle", () => {
+      if (!details.open) return;
+      wrap.querySelectorAll("details.menu-acc").forEach((d) => {
+        if (d !== details) d.open = false;
+      });
     });
   });
 
