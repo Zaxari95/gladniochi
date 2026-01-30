@@ -1156,3 +1156,54 @@ select:focus {
     height: 28px;
   }
 }
+
+/* =========================
+   MENU ACCORDION
+========================= */
+
+.menu-acc{
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(0,0,0,.18);
+  margin-top: 14px;
+}
+
+.menu-acc details{
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.menu-acc details:last-child{ border-bottom: 0; }
+
+.menu-acc summary{
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  font-weight: 900;
+  color: rgba(255,255,255,.92);
+  background: linear-gradient(90deg, rgba(122,60,255,.16), rgba(255,255,255,.03));
+}
+
+.menu-acc summary::-webkit-details-marker{ display:none; }
+
+.menu-acc summary::after{
+  content: "▾";
+  opacity: .85;
+  font-size: 18px;
+  transition: transform .15s ease;
+}
+.menu-acc details[open] summary::after{
+  transform: rotate(180deg);
+}
+
+.menu-acc .acc-body{
+  padding: 6px 14px 12px;
+}
+
+.menu-acc .menu-item{
+  padding: 12px 0;
+}
