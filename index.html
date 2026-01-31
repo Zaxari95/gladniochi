@@ -234,124 +234,74 @@
   <section id="events" class="section card">
   <h2>Събития и куверти</h2>
 
-  <!-- Инфо (оставяме го, но го правим “премиум” визуално) -->
-  <div class="events-note">
-    <ul class="events-bullets">
-      <li>Над 20 човека – <b>препоръчителен куверт</b></li>
-      <li>Задължителен куверт: <b>14 февруари</b>, <b>8 март</b>, <b>Нова година</b></li>
-      <li>Избор: <b>уиски</b> или <b>ракия</b></li>
-      <li>Алкохол отвън – <b>20 €</b> / бутилка</li>
-      <li>Торта отвън – <b>15 €</b> (с документ)</li>
-      <li>След 02:00 – <b>75 €</b> / час (петък и събота)</li>
-    </ul>
-  </div>
+  <div class="events-grid">
+    <!-- CARD 1: Събития / правила -->
+    <div class="event-card">
+      <div class="event-card-icon">🎉</div>
+      <h3>Събития</h3>
 
-  <!-- 2 Premium Cards (куверти) -->
-  <div class="covers-grid">
+      <ul class="event-list">
+        <li>Над 20 човека – <b>препоръчителен</b> куверт</li>
+        <li>Задължителен куверт: <b>14 февруари</b>, <b>8 март</b>, <b>Нова година</b></li>
+        <li>Алкохол отвън – <b>20 € / бутилка</b></li>
+        <li>Торта отвън – <b>15 €</b> (с документ)</li>
+        <li>След 02:00 – <b>75 € / час</b> (петък и събота)</li>
+      </ul>
+    </div>
 
-    <!-- Card 1 -->
-    <article class="cover-card">
-      <div class="cover-top">
-        <div class="cover-chip">Куверт</div>
-        <div class="cover-price">35 €</div>
-      </div>
+    <!-- CARD 2: Куверти (accordion) -->
+    <div class="event-card highlight">
+      <div class="event-card-icon">🍽️</div>
+      <h3>Куверти</h3>
 
-      <h3 class="cover-title">Вариант 1 (Пилешко)</h3>
+      <details class="cover-acc">
+        <summary class="cover-acc-head">
+          <span class="cover-acc-title">Вариант 1 (Пилешко)</span>
+          <span class="cover-acc-price">35 €</span>
+          <span class="cover-acc-chevron">▾</span>
+        </summary>
 
-      <div class="cover-lines">
-        <div class="cover-row">
-          <span class="cover-label">🥗 Салата</span>
-          <span class="cover-value">Цезар с хрупкаво пиле</span>
+        <div class="cover-acc-body">
+          <div class="cover-row"><b>Салата:</b> Цезар с хрупкаво пиле</div>
+          <div class="cover-row"><b>Предястие:</b> Сухи мезета с 2 вида сирена (Филе Елена, луканка, ементал, чедър)</div>
+          <div class="cover-row"><b>Основно ястие:</b> Хрупкава маринована пилешка пържола от бут с гарнитура запечени картофи</div>
+          <div class="cover-row"><b>Хляб:</b> Селска питка</div>
+          <div class="cover-row"><b>Десерт:</b> Торта Бискотино</div>
+
+          <div class="cover-subtitle">Напитки</div>
+          <div class="cover-row"><b>Минерална вода:</b> 0.450 мл – 16 лв.</div>
+          <div class="cover-row"><b>Безалкохолна напитка:</b> 0.250 мл – 16 лв.</div>
+
+          <div class="cover-subtitle">Алкохол</div>
+          <div class="cover-row">Ракия Бургаска мускатова или Уиски Червено Джони 0.50 мл (по избор)</div>
         </div>
+      </details>
 
-        <div class="cover-row">
-          <span class="cover-label">🥓 Предястие</span>
-          <span class="cover-value">
-            Сухи мезета с 2 вида сирена
-            <span class="cover-muted">(филе Елена, луканка, ементал, чедър)</span>
-          </span>
+      <details class="cover-acc">
+        <summary class="cover-acc-head">
+          <span class="cover-acc-title">Вариант 2 (Свинско)</span>
+          <span class="cover-acc-price">38 €</span>
+          <span class="cover-acc-chevron">▾</span>
+        </summary>
+
+        <div class="cover-acc-body">
+          <div class="cover-row"><b>Салата:</b> Селска салата</div>
+          <div class="cover-row"><b>Предястие:</b> Сухи мезета с 2 вида сирена (Филе Елена, луканка, ементал, чедър)</div>
+          <div class="cover-row"><b>Основно ястие:</b> Пълнено свинско бон филе с бекон, гъби, кромид и магданоз с гарнитура картофено пюре и сос братенджус</div>
+          <div class="cover-row"><b>Хляб:</b> Селска питка</div>
+          <div class="cover-row"><b>Десерт:</b> Торта Бискотино</div>
+
+          <div class="cover-subtitle">Напитки</div>
+          <div class="cover-row"><b>Минерална вода:</b> 0.450 мл – 16 лв.</div>
+          <div class="cover-row"><b>Безалкохолна напитка:</b> 0.250 мл – 16 лв.</div>
+
+          <div class="cover-subtitle">Алкохол</div>
+          <div class="cover-row">Ракия Бургаска мускатова или Уиски Червено Джони 0.50 мл (по избор)</div>
         </div>
+      </details>
 
-        <div class="cover-row">
-          <span class="cover-label">🍽️ Основно</span>
-          <span class="cover-value">Хрупкава маринована пилешка пържола от бут с гарнитура запечени картофи</span>
-        </div>
-
-        <div class="cover-row">
-          <span class="cover-label">🍞 Хляб</span>
-          <span class="cover-value">Селска питка</span>
-        </div>
-
-        <div class="cover-row">
-          <span class="cover-label">🍰 Десерт</span>
-          <span class="cover-value">Торта Бискотино</span>
-        </div>
-
-        <div class="cover-row">
-          <span class="cover-label">🥤 Напитки</span>
-          <span class="cover-value">Минерална вода 0.450 мл (1 бр.) + Безалкохолна 0.250 мл (1 бр.)</span>
-        </div>
-
-        <div class="cover-row">
-          <span class="cover-label">🥃 Алкохол</span>
-          <span class="cover-value">Ракия Бургаска мускатова или Уиски Червено Джони 0.50 мл <span class="cover-muted">(по избор)</span></span>
-        </div>
-      </div>
-    </article>
-
-    <!-- Card 2 -->
-    <article class="cover-card cover-card-alt">
-      <div class="cover-top">
-        <div class="cover-chip">Куверт</div>
-        <div class="cover-price">38 €</div>
-      </div>
-
-      <h3 class="cover-title">Вариант 2 (Свинско)</h3>
-
-      <div class="cover-lines">
-        <div class="cover-row">
-          <span class="cover-label">🥗 Салата</span>
-          <span class="cover-value">Селска салата</span>
-        </div>
-
-        <div class="cover-row">
-          <span class="cover-label">🥓 Предястие</span>
-          <span class="cover-value">
-            Сухи мезета с 2 вида сирена
-            <span class="cover-muted">(филе Елена, луканка, ементал, чедър)</span>
-          </span>
-        </div>
-
-        <div class="cover-row">
-          <span class="cover-label">🍽️ Основно</span>
-          <span class="cover-value">
-            Пълнено свинско бон филе с бекон, гъби, кромид и магданоз
-            с гарнитура картофено пюре и сос братен джус
-          </span>
-        </div>
-
-        <div class="cover-row">
-          <span class="cover-label">🍞 Хляб</span>
-          <span class="cover-value">Селска питка</span>
-        </div>
-
-        <div class="cover-row">
-          <span class="cover-label">🍰 Десерт</span>
-          <span class="cover-value">Торта Бискотино</span>
-        </div>
-
-        <div class="cover-row">
-          <span class="cover-label">🥤 Напитки</span>
-          <span class="cover-value">Минерална вода 0.450 мл (1 бр.) + Безалкохолна 0.250 мл (1 бр.)</span>
-        </div>
-
-        <div class="cover-row">
-          <span class="cover-label">🥃 Алкохол</span>
-          <span class="cover-value">Ракия Бургаска мускатова или Уиски Червено Джони 0.50 мл <span class="cover-muted">(по избор)</span></span>
-        </div>
-      </div>
-    </article>
-
+      <p class="cover-note">Избор: уиски или ракия (включено според описанието).</p>
+    </div>
   </div>
 </section>
 
