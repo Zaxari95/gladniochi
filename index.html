@@ -234,74 +234,86 @@
   <section id="events" class="section card">
   <h2>Събития и куверти</h2>
 
-  <div class="events-grid">
-    <!-- CARD 1: Събития / правила -->
-    <div class="event-card">
-      <div class="event-card-icon">🎉</div>
-      <h3>Събития</h3>
+  <ul class="list">
+    <li>Над 20 човека – препоръчителен куверт</li>
+    <li>Задължителен куверт: 14 февруари, 8 март, Нова година</li>
+    <li>Избор на алкохол: уиски или ракия</li>
+    <li>Алкохол отвън – 20 € / бутилка</li>
+    <li>Торта отвън – 15 € (с документ)</li>
+    <li>След 02:00 – 75 € / час (петък и събота)</li>
+  </ul>
 
-      <ul class="event-list">
-        <li>Над 20 човека – <b>препоръчителен</b> куверт</li>
-        <li>Задължителен куверт: <b>14 февруари</b>, <b>8 март</b>, <b>Нова година</b></li>
-        <li>Алкохол отвън – <b>20 € / бутилка</b></li>
-        <li>Торта отвън – <b>15 €</b> (с документ)</li>
-        <li>След 02:00 – <b>75 € / час</b> (петък и събота)</li>
-      </ul>
-    </div>
+  <!-- ACCORDION: КУВЕРТИ -->
+  <div class="menu-acc-wrap">
 
-    <!-- CARD 2: Куверти (accordion) -->
-    <div class="event-card highlight">
-      <div class="event-card-icon">🍽️</div>
-      <h3>Куверти</h3>
+    <!-- КУВЕРТ 1 -->
+    <details class="menu-acc">
+      <summary class="menu-acc-head">
+        <span class="menu-acc-title">Куверт – Вариант 1 (Пилешко)</span>
+        <span class="menu-acc-chevron">▾</span>
+      </summary>
 
-      <details class="cover-acc">
-        <summary class="cover-acc-head">
-          <span class="cover-acc-title">Вариант 1 (Пилешко)</span>
-          <span class="cover-acc-price">35 €</span>
-          <span class="cover-acc-chevron">▾</span>
-        </summary>
+      <div class="menu-acc-body">
+        <h4 class="menu-subcat-title">Салата</h4>
+        <p>Цезар с хрупкаво пиле</p>
 
-        <div class="cover-acc-body">
-          <div class="cover-row"><b>Салата:</b> Цезар с хрупкаво пиле</div>
-          <div class="cover-row"><b>Предястие:</b> Сухи мезета с 2 вида сирена (Филе Елена, луканка, ементал, чедър)</div>
-          <div class="cover-row"><b>Основно ястие:</b> Хрупкава маринована пилешка пържола от бут с гарнитура запечени картофи</div>
-          <div class="cover-row"><b>Хляб:</b> Селска питка</div>
-          <div class="cover-row"><b>Десерт:</b> Торта Бискотино</div>
+        <h4 class="menu-subcat-title">Предястие</h4>
+        <p>Сухи мезета с 2 вида сирена (Филе Елена, луканка, ементал, чедър)</p>
 
-          <div class="cover-subtitle">Напитки</div>
-          <div class="cover-row"><b>Минерална вода:</b> 0.450 мл – 16 лв.</div>
-          <div class="cover-row"><b>Безалкохолна напитка:</b> 0.250 мл – 16 лв.</div>
+        <h4 class="menu-subcat-title">Основно ястие</h4>
+        <p>Хрупкава маринована пилешка пържола от бут с гарнитура запечени картофи</p>
 
-          <div class="cover-subtitle">Алкохол</div>
-          <div class="cover-row">Ракия Бургаска мускатова или Уиски Червено Джони 0.50 мл (по избор)</div>
-        </div>
-      </details>
+        <h4 class="menu-subcat-title">Хляб</h4>
+        <p>Селска питка</p>
 
-      <details class="cover-acc">
-        <summary class="cover-acc-head">
-          <span class="cover-acc-title">Вариант 2 (Свинско)</span>
-          <span class="cover-acc-price">38 €</span>
-          <span class="cover-acc-chevron">▾</span>
-        </summary>
+        <h4 class="menu-subcat-title">Десерт</h4>
+        <p>Торта Бискотино</p>
 
-        <div class="cover-acc-body">
-          <div class="cover-row"><b>Салата:</b> Селска салата</div>
-          <div class="cover-row"><b>Предястие:</b> Сухи мезета с 2 вида сирена (Филе Елена, луканка, ементал, чедър)</div>
-          <div class="cover-row"><b>Основно ястие:</b> Пълнено свинско бон филе с бекон, гъби, кромид и магданоз с гарнитура картофено пюре и сос братенджус</div>
-          <div class="cover-row"><b>Хляб:</b> Селска питка</div>
-          <div class="cover-row"><b>Десерт:</b> Торта Бискотино</div>
+        <h4 class="menu-subcat-title">Напитки</h4>
+        <p>Минерална вода 0.450 мл – <b>1 бр.</b></p>
+        <p>Безалкохолна напитка 0.250 мл – <b>1 бр.</b></p>
 
-          <div class="cover-subtitle">Напитки</div>
-          <div class="cover-row"><b>Минерална вода:</b> 0.450 мл – 16 лв.</div>
-          <div class="cover-row"><b>Безалкохолна напитка:</b> 0.250 мл – 16 лв.</div>
+        <h4 class="menu-subcat-title">Алкохол</h4>
+        <p>Ракия Бургаска мускатова или Уиски Червено Джони 0.50 мл (по избор)</p>
 
-          <div class="cover-subtitle">Алкохол</div>
-          <div class="cover-row">Ракия Бургаска мускатова или Уиски Червено Джони 0.50 мл (по избор)</div>
-        </div>
-      </details>
+        <div class="price"><b>Цена: 35 €</b></div>
+      </div>
+    </details>
 
-      <p class="cover-note">Избор: уиски или ракия (включено според описанието).</p>
-    </div>
+    <!-- КУВЕРТ 2 -->
+    <details class="menu-acc">
+      <summary class="menu-acc-head">
+        <span class="menu-acc-title">Куверт – Вариант 2 (Свинско)</span>
+        <span class="menu-acc-chevron">▾</span>
+      </summary>
+
+      <div class="menu-acc-body">
+        <h4 class="menu-subcat-title">Салата</h4>
+        <p>Селска салата</p>
+
+        <h4 class="menu-subcat-title">Предястие</h4>
+        <p>Сухи мезета с 2 вида сирена (Филе Елена, луканка, ементал, чедър)</p>
+
+        <h4 class="menu-subcat-title">Основно ястие</h4>
+        <p>Пълнено свинско бон филе с бекон, гъби, кромид и магданоз с гарнитура картофено пюре и сос братенджус</p>
+
+        <h4 class="menu-subcat-title">Хляб</h4>
+        <p>Селска питка</p>
+
+        <h4 class="menu-subcat-title">Десерт</h4>
+        <p>Торта Бискотино</p>
+
+        <h4 class="menu-subcat-title">Напитки</h4>
+        <p>Минерална вода 0.450 мл – <b>1 бр.</b></p>
+        <p>Безалкохолна напитка 0.250 мл – <b>1 бр.</b></p>
+
+        <h4 class="menu-subcat-title">Алкохол</h4>
+        <p>Ракия Бургаска мускатова или Уиски Червено Джони 0.50 мл (по избор)</p>
+
+        <div class="price"><b>Цена: 38 €</b></div>
+      </div>
+    </details>
+
   </div>
 </section>
 
