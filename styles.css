@@ -1780,3 +1780,23 @@ select:focus {
   background: rgba(122,60,255,.14);
   border: 1px solid rgba(122,60,255,.28);
 }
+
+/* FIX: Events call button да не излиза извън картата */
+#events .btn-call-event{
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  margin: 0 !important;          /* маха глобалния margin от .btn */
+  display: flex;
+  justify-content: center;
+
+  white-space: normal;           /* ако текста е дълъг да се пренася */
+  text-align: center;
+}
+
+/* ако родителя е flex/има padding, това помага допълнително */
+#events .events-intro,
+#events .events-contact{
+  overflow: hidden;
+}
