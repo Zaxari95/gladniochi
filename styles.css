@@ -1587,3 +1587,184 @@ select:focus {
   background: rgba(122,60,255,.16);
   border: 1px solid rgba(122,60,255,.30);
 }
+
+/* =========================
+   EVENTS – phone button (premium)
+========================= */
+
+.events-contact{
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.10);
+  display: grid;
+  gap: 10px;
+}
+
+.events-contact-text{
+  color: rgba(255,255,255,.82);
+  font-weight: 700;
+  letter-spacing: .1px;
+}
+
+.btn-call-event{
+  width: 100%;
+  justify-content: center;
+  margin: 0 !important;
+
+  background: linear-gradient(135deg, #17c964, #0ea54f) !important;
+  border-color: rgba(255,255,255,.18) !important;
+  box-shadow: 0 14px 32px rgba(20,200,100,.22) !important;
+}
+
+.btn-call-event:hover{ filter: brightness(1.06); }
+
+
+/* =========================
+   KUVERTI – premium accordion cards (fix iOS marker)
+========================= */
+
+.kuvert-acc{
+  margin-top: 14px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+}
+
+/* маха "придобитния" маркер (▶) на iOS/Safari */
+.kuvert-acc summary::-webkit-details-marker{ display:none; }
+.kuvert-acc summary{ list-style: none; }
+
+/* PREMIUM HEADER */
+.kuvert-acc summary{
+  cursor: pointer;
+  padding: 14px 14px;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+
+  background:
+    radial-gradient(900px 160px at 30% -30%, rgba(122,60,255,.28), rgba(0,0,0,0) 55%),
+    linear-gradient(180deg, rgba(18,18,22,.92), rgba(10,10,12,.92));
+
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.kuvert-acc summary::before{
+  content:"🍽️";
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+.kuvert-title{
+  font-weight: 900;
+  letter-spacing: .2px;
+  color: rgba(255,255,255,.96);
+  font-size: 15px;
+}
+
+.kuvert-price-chip{
+  font-size: 14px;
+  font-weight: 900;
+  padding: 7px 11px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.95);
+  white-space: nowrap;
+}
+
+.kuvert-chevron{
+  width: 36px;
+  height: 36px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.30);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  opacity: .95;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+.kuvert-acc[open] .kuvert-chevron{
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* BODY */
+.kuvert-body{
+  padding: 14px 14px 16px;
+  background: linear-gradient(180deg, rgba(20,20,24,.70), rgba(12,12,14,.80));
+}
+
+.kuvert-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 900px){
+  .kuvert-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+  .kuvert-wide{ grid-column: 1 / -1; }
+}
+
+.kuvert-item{
+  padding: 12px 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.kuvert-k{
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .25px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.80);
+  margin-bottom: 6px;
+}
+
+.kuvert-v{
+  color: rgba(255,255,255,.92);
+  line-height: 1.45;
+  font-size: 14px;
+}
+
+.kuvert-note{
+  color: rgba(255,255,255,.68);
+  font-weight: 700;
+}
+
+/* price footer */
+.kuvert-bottom{
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.10);
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255,255,255,.80);
+  font-weight: 800;
+}
+
+.kuvert-bottom-price{
+  color: rgba(255,255,255,.96);
+  font-weight: 900;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(122,60,255,.14);
+  border: 1px solid rgba(122,60,255,.28);
+}
