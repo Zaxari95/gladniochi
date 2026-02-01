@@ -1666,3 +1666,30 @@ select:focus {
   font-size: 13px;
   color: rgba(255,255,255,.70);
 }
+
+.events-intro{
+  background: linear-gradient(
+    180deg,
+    rgba(20,20,24,.9),
+    rgba(12,12,16,.9)
+  );
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  padding: 18px 18px 14px;
+  margin-bottom: 20px;
+}
+
+.events-list{
+  padding-left: 18px;
+  margin: 14px 0;
+}
+
+.events-list li{
+  margin-bottom: 8px;
+}
+
+.events-contact{
+  margin-top: 14px;
+  font-size: 15px;
+  opacity: .95;
+}
