@@ -1394,50 +1394,21 @@ select:focus {
 }
 
 /* =========================
-   EVENTS / COVERS – PREMIUM
-   (append at very bottom)
+   EVENTS + KUVERTI – PREMIUM (SINGLE SOURCE)
+   (put at VERY bottom; remove old events/covers blocks)
 ========================= */
 
-.events-note{
-  margin-top: 10px;
-  padding: 14px 14px;
-  border-radius: 16px;
-  background: rgba(0,0,0,.18);
-  border: 1px solid rgba(255,255,255,.08);
-}
-
-.events-bullets{
-  margin: 0;
-  padding-left: 18px;
-  color: rgba(255,255,255,.85);
-}
-.events-bullets li{ padding: 6px 0; }
-
-.covers-grid{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  margin-top: 16px;
-}
-
-@media (min-width: 900px){
-  .covers-grid{
-    grid-template-columns: 1fr 1fr; /* 2 cards */
-    gap: 18px;
-  }
-}
-
-.cover-card{
-  border-radius: 22px;
-  padding: 18px 18px;
+.events-intro{
   background: linear-gradient(180deg, rgba(18,18,22,.92), rgba(10,10,12,.92));
   border: 1px solid rgba(255,255,255,.10);
+  border-radius: 20px;
+  padding: 18px 18px 16px;
   box-shadow: 0 18px 40px rgba(0,0,0,.35);
   position: relative;
   overflow: hidden;
 }
 
-.cover-card::before{
+.events-intro::before{
   content:"";
   position:absolute;
   inset:-40% -30% auto -30%;
@@ -1446,156 +1417,49 @@ select:focus {
   pointer-events:none;
 }
 
-.cover-card-alt::before{
-  background: radial-gradient(closest-side, rgba(34,197,94,.16), rgba(0,0,0,0));
-}
-
-.cover-top{
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  gap: 12px;
-  position: relative;
-  z-index: 1;
-  margin-bottom: 10px;
-}
-
-.cover-chip{
-  display:inline-flex;
-  align-items:center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-weight: 900;
-  letter-spacing: .2px;
-  background: rgba(122,60,255,.16);
-  border: 1px solid rgba(122,60,255,.35);
-  color: rgba(255,255,255,.92);
-}
-
-.cover-card-alt .cover-chip{
-  background: rgba(34,197,94,.12);
-  border-color: rgba(34,197,94,.30);
-}
-
-.cover-price{
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-weight: 900;
-  letter-spacing: .2px;
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.12);
-  color: rgba(255,255,255,.95);
-}
-
-.cover-title{
-  margin: 0 0 12px;
-  font-size: 20px;
-  font-weight: 900;
-  letter-spacing: .2px;
-  position: relative;
-  z-index: 1;
-}
-
-.cover-lines{
-  display: grid;
-  gap: 10px;
-  position: relative;
-  z-index: 1;
-}
-
-.cover-row{
-  display: grid;
-  gap: 6px;
-  padding: 10px 12px;
-  border-radius: 16px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.07);
-}
-
-.cover-label{
-  font-weight: 900;
-  color: rgba(255,255,255,.92);
-  font-size: 13px;
-  letter-spacing: .2px;
-}
-
-.cover-value{
-  color: rgba(255,255,255,.86);
-  line-height: 1.45;
-  font-size: 14px;
-}
-
-.cover-muted{
-  color: rgba(255,255,255,.65);
-  font-weight: 700;
-  margin-left: 6px;
-}
-
-/* =========================
-   EVENTS + COVERS (Premium + accordion)
-========================= */
-
-.events-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 18px;
-  margin-top: 18px;
-}
-
-.event-card{
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 22px;
-  padding: 22px 20px;
-  box-shadow: 0 18px 40px rgba(0,0,0,.35);
-}
-
-.event-card.highlight{
-  background: linear-gradient(180deg, rgba(20,20,22,.95), rgba(12,12,14,.95));
-  border-color: rgba(122,60,255,.25);
-}
-
-.event-card-icon{
-  width: 48px;
-  height: 48px;
-  border-radius: 16px;
-  background: rgba(0,0,0,.35);
-  display: grid;
-  place-items: center;
-  font-size: 24px;
-  margin-bottom: 12px;
-  border: 1px solid rgba(255,255,255,.12);
-}
-
-.event-card h3{
+.events-intro h3{
   margin: 0 0 10px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 900;
+  letter-spacing: .2px;
 }
 
-.event-list{
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.events-list{
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,.86);
 }
 
-.event-list li{
-  padding: 6px 0;
-  font-size: 15px;
-  color: rgba(255,255,255,.9);
+.events-list li{
+  margin: 8px 0;
+  line-height: 1.55;
 }
 
-/* Covers accordion */
-.cover-acc{
-  margin-top: 12px;
-  border-radius: 18px;
+.events-contact{
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  color: rgba(255,255,255,.90);
+  font-weight: 800;
+}
+
+.events-contact a{
+  color: #fff;
+  text-decoration: none;
+}
+.events-contact a:hover{ color: var(--accent); }
+
+/* ---- KUVERT ACCORDION (scoped) ---- */
+.kuvert-acc{
+  margin-top: 14px;
+  border-radius: 20px;
   border: 1px solid rgba(255,255,255,.10);
   background: rgba(255,255,255,.03);
   overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
 }
 
-.cover-acc summary{
+.kuvert-acc summary{
   list-style: none;
   cursor: pointer;
   padding: 14px 14px;
@@ -1612,84 +1476,114 @@ select:focus {
   background: linear-gradient(90deg, rgba(122,60,255,.18), rgba(255,255,255,.03));
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
-.cover-acc summary::-webkit-details-marker{ display:none; }
 
-.cover-acc-title{ font-size: 15px; }
-.cover-acc-price{
-  font-size: 14px;
-  font-weight: 900;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.10);
+.kuvert-acc summary::-webkit-details-marker{ display:none; }
+
+.kuvert-title{
+  font-size: 15px;
 }
 
-.cover-acc-chevron{
-  width: 34px;
-  height: 34px;
-  border-radius: 12px;
+.kuvert-price-chip{
+  font-size: 14px;
+  font-weight: 900;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.95);
+}
+
+.kuvert-chevron{
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
   border: 1px solid rgba(255,255,255,.12);
   background: rgba(0,0,0,.25);
   display: grid;
   place-items: center;
   font-size: 18px;
   opacity: .95;
-  transition: transform .15s ease, opacity .15s ease;
+  transition: transform .18s ease, opacity .18s ease, background .18s ease;
 }
 
-.cover-acc[open] .cover-acc-chevron{
+.kuvert-acc:hover .kuvert-chevron{ background: rgba(0,0,0,.35); }
+
+.kuvert-acc[open] .kuvert-chevron{
   transform: rotate(180deg);
   opacity: 1;
 }
 
-.cover-acc-body{
-  padding: 14px 14px 16px;
-  color: rgba(255,255,255,.88);
+/* ---- INSIDE BODY: premium mini-cards grid ---- */
+.kuvert-body{
+  padding: 16px 14px 16px;
+  background: linear-gradient(180deg, rgba(12,12,14,.55), rgba(0,0,0,0));
 }
 
-.cover-row{
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-  line-height: 1.45;
-}
-.cover-row:last-child{ border-bottom: none; }
-
-.cover-subtitle{
-  margin-top: 14px;
-  font-weight: 900;
-  letter-spacing: .2px;
-  color: rgba(255,255,255,.95);
+.kuvert-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 
-.cover-note{
-  margin: 12px 2px 0;
-  font-size: 13px;
-  color: rgba(255,255,255,.70);
+@media (min-width: 820px){
+  .kuvert-grid{
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .kuvert-wide{ grid-column: 1 / -1; }
 }
 
-.events-intro{
-  background: linear-gradient(
-    180deg,
-    rgba(20,20,24,.9),
-    rgba(12,12,16,.9)
-  );
-  border: 1px solid rgba(255,255,255,.08);
+.kuvert-item{
+  padding: 12px 12px;
   border-radius: 18px;
-  padding: 18px 18px 14px;
-  margin-bottom: 20px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
 }
 
-.events-list{
-  padding-left: 18px;
-  margin: 14px 0;
-}
-
-.events-list li{
-  margin-bottom: 8px;
-}
-
-.events-contact{
-  margin-top: 14px;
-  font-size: 15px;
+.kuvert-k{
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .25px;
+  color: rgba(255,255,255,.92);
+  text-transform: uppercase;
   opacity: .95;
+  margin-bottom: 6px;
+}
+
+.kuvert-v{
+  color: rgba(255,255,255,.86);
+  line-height: 1.45;
+  font-size: 15px;
+}
+
+.kuvert-note{
+  display: inline;
+  color: rgba(255,255,255,.65);
+  font-weight: 700;
+}
+
+/* bottom price strip (optional) */
+.kuvert-bottom{
+  margin-top: 14px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 12px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.kuvert-bottom span{
+  font-weight: 900;
+  color: rgba(255,255,255,.92);
+}
+
+.kuvert-bottom .kuvert-bottom-price{
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(122,60,255,.16);
+  border: 1px solid rgba(122,60,255,.30);
 }
