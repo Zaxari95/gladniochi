@@ -1,292 +1,362 @@
-const RATE = 1.95583;
-
 /* =========================
-   MENU DATA (1:1 твоето)
+   НОВО МЕНЮ – ГЛАДНИ О'ЧИ
+   Само EUR
 ========================= */
+
 const menuData = {
-  "Основно меню": {
-    "Салати": [
-      { name: "Шопска салата", desc: "домати, краставици, пресен лук, чушка, маслини, сирене", price: 4.99 },
-      { name: "Гръцка салата", desc: "домати, краставици, грилована маслина, червен лук, зелена чушка, сирене, зехтин, риган", price: 5.99 },
-      { name: "Цезар с хрупкави скариди", desc: "букет от листни салати, Цезар дресинг, хрупкави скариди, чери домати, крутони и пармезан", price: 8.49 },
-      { name: "Салата Капрезе", desc: "зрял домат, биволска моцарела и песто Дженовезе", price: 7.99 },
-      { name: "Селска салата", desc: "зрели домати с печена чушка, мус от катък и магданоз", price: 7.49 },
-      { name: "Салата Гладни О'чи", desc: "букет от листни салати, овкусени с малинов винегрет, чери домати, бейби моцарела, Прошуто Крудо, синьо сирене", price: 8.99 },
-    ],
-    "Брускети": [
-      { name: "Брускети с чери домати,моцарела и домашно песто", desc: "", price: 6.49 },
-      { name: "Брускети с Филаделфия и Прошуто Крудо", desc: "", price: 6.49 }
-    ],
-    "Стартери": [
-      { name: "Домашни пържени картофи", desc: "", price: 2.99 },
-      { name: "Домашен картофен чипс с трюфелова майонеза", desc: "", price: 3.99 },
-      { name: "Панирани възглавнички от топено сирене с боровинково сладко", desc: "", price: 5.49 },
-      { name: "Панко пилешки филенца с млечен сос", desc: "", price: 6.99 },
-      { name: "Кентъки пилешки крилца с азиатско чили", desc: "", price: 6.99 },
-      { name: "Телешки език в билково масло и чесън", desc: "", price: 8.99 },
-      { name: "Кралски скариди в масло и бяло вино с лимонова коричка и чеснова паста", desc: "", price: 10.99 },
-      { name: "Домашни Трио Разядки", desc: "Тирокафтери, Катък и Кьопоолу с домашно хлебче", price: 7.99 },
-      { name: "Пилешки сърчица в масло", desc: "", price: 7.49 },
-    ],
-    "Класическа Италианска паста": [
-      { name: "Спагети Карбонара", desc: "прясна паста, панчета, жълтък, пармиджано", price: 7.99 },
-      { name: "Спагети Болонезе", desc: "лук, моркови, мляно месо, доматен сос, пармиджано", price: 7.49 },
-      { name: "Талиатели със скариди и чери домати", desc: "скариди, сметана, чери домати, доматен сос, пармиджано", price: 8.49 },
-      { name: "Пене с пилешко филе и четири сирена", desc: "пилешко филе, сметана, чедър, ементал, синьо сирене и пармиджано", price: 8.49 }
-    ],
-    "Основни ястия": [
-      { name: "Сочни свински скалопини", desc: "скалопини от свинско бон филе с манатарки, картофено пюре, сос братен джус и чипс от пармиджано", price: 9.49 },
-      { name: "Телешки Чийзбургер", desc: "питка бриош, BBQ сос, яйце, чътни от краставичка, карамелизиран лук, чедър, пържени картофки", price: 8.99 },
-      { name: "Пилешки Чийзбургер", desc: "питка бриош, бургер сос, чедър, домат, зелена салата, пържени картофки", price: 7.99 },
-      { name: "Бургер с дърпано свинско и чедър", desc: "питка бриош, BBQ сос, чедър, карамелизиран лук, зелена салата, пържени картофки", price: 8.49 },
-      { name: "Хрупкав Пилешки шницел", desc: "микс свежи салати с цитрусов винегрет,чери домати, пържени картофи", price: 7.99 },
-      { name: "Пилешко Филе с броколи и сос Четири сирена", desc: "пилешко филе, броколи, чедър, ементал, пармиджано, синьо сирене, сметана", price: 8.49 },
-      { name: "Хайдушки Калпак", desc: "свинско месо, гъби, лук,зелена люта чушка, кашкавал, свежи подправки", price: 8.49 },
-      { name: "Дърпано свинско месце", desc: "върху канапе от пухкаво картофено пюре и сос Братенджус", price: 8.49 },
-      { name: "Вегетариански кюфтенца", desc: "кюфтенца от киноа, рукола, чери домати, млечен сос", price: 7.49 },
-      { name: "Пиле терияки", desc: "пилешки късчета върху канапе от ориз, сос терияки и сусам", price: 7.99 },
-      { name: "Пъстърва от грила", desc: "", price: 6.99 },
-      { name: "Лаврак от грила", desc: "", price: 7.99 }
-    ],
-    "Грил/BBQ": [
-      { name: "Порция кюфтета/кебапчета 3бр.", desc: "микс зелени салати, лютеница, пържени картофи", price: 6.10 },
-      { name: "Пилешко филе", desc: "", price: 5.00 },
-      { name: "Свинска вратна пържола", desc: "", price: 6.00 },
-      { name: "Болярска дъска с меса", desc: "пил.филе, св.вратна пържола, 3бр. кюфтета, 3бр. кебапчета, св.бон филенца, печурки, дом.лютеница, жарени картофи", price: 24.99 }
-    ],
-    "Домашни хлебчета": [
-      { name: "Селска питка", desc: "", price: 1.60 },
-      { name: "Домашно хлебче", desc: "чесново или с подправки", price: 1.70 },
-      { name: "Домашна фокача", desc: "", price: 2.60 }
-    ],
-    "Десерти": [
-      { name: "Шоколадов мус с маскарпоне", desc: "", price: 3.59 },
-      { name: "Шоколадово Суфле с топка сладолед", desc: "", price: 3.99 },
-      { name: "Торта Бискотино", desc: "", price: 3.99 }
-    ]
-  },
 
-  "Пици/Панини": {
-    "🍕 Пици": [
-      { name: "Маргарита", desc: "доматен сос, моцарела, пресен босилек, зехтин екстра върджин", price: 4.99 },
-      { name: "Формаджи", desc: "моцарела, сметана, пармиджано, синьо сирене, бри", price: 6.49 },
-      { name: "Пепероне", desc: "доматен сос, моцарела, пепероне, маслини, босилек, зехтин екстра върджин", price: 6.99 },
-      { name: "Вегетариана", desc: "доматен сос, моцарела, чери домати, чушки, рукола, пармиджано, зехтин", price: 5.99 },
-      { name: "Кото е фунги", desc: "доматен сос, моцарела, прошуто кото, гъби печурка, маслини", price: 6.99 },
-      { name: "Прошуто крудо", desc: "доматен сос, моцарела, прошуто крудо, чери домати, рукола, пармиджано", price: 6.49 },
-      { name: "Гладни О'чи", desc: "сметана, моцарела, пармиджано, панчета, гъби печурка, зехтин екстра върджин", price: 7.10 },
-      { name: "Империале", desc: "моцарела, пармиджано, панчета, жълтък, черен пипер, зехтин екстра върджин", price: 6.80 }
-    ],
-    "🥪 Панини": [
-      { name: "Панини Кото", desc: "", price: 4.99 },
-      { name: "Панини Крудо", desc: "", price: 4.99 },
-      { name: "Панини Пепероне", desc: "", price: 4.99 }
-    ]
-  },
-
-  "Напитки": {
-    "☕ Топли напитки": [
-      { name: "Кафе Kimbo", desc: "60 мл", price: 1.00 },
-      { name: "Капучино", desc: "180 мл", price: 1.60 },
-      { name: "Лате", desc: "180 мл", price: 1.60 },
-      { name: "Топъл шоколад", desc: "180 мл", price: 1.60 },
-      { name: "Чай", desc: "200 мл", price: 0.80 }
-    ],
-    "🧃 Безалкохолни напитки": [
-      { name: "Кока Кола", desc: "250 мл", price: 1.60 },
-      { name: "Фанта", desc: "250 мл", price: 1.60 },
-      { name: "Спрайт", desc: "250 мл", price: 1.60 },
-      { name: "Тоник", desc: "250 мл", price: 1.60 },
-      { name: "Тоник розов", desc: "250 мл", price: 1.60 },
-      { name: "Сода", desc: "250 мл", price: 1.40 },
-      { name: "Минерална вода", desc: "330 мл", price: 1.20 },
-      { name: "Минерална вода", desc: "750 мл", price: 2.10 },
-      { name: "Натурален сок BBB", desc: "250 мл", price: 1.60 },
-      { name: "Студен чай", desc: "250 мл", price: 1.60 },
-      { name: "Фрапе", desc: "400 мл", price: 2.10 },
-      { name: "Фрапе с вкус", desc: "400 мл", price: 2.50 }
-    ],
-    "🍸 Алкохолни напитки": {
-      "🥃 Уиски – Шотландско": [
-        { name: "Гленфидих 12 г.", desc: "50 мл", price: 7.20 },
-        { name: "Макалън 12 г.", desc: "50 мл", price: 9.50 },
-        { name: "Джони Уокър Блек", desc: "50 мл", price: 3.70 },
-        { name: "Джони Уокър Ред", desc: "50 мл", price: 2.70 },
-        { name: "Чивас", desc: "50 мл", price: 4.20 },
-        { name: "Джи Би", desc: "50 мл", price: 2.80 }
-      ],
-      "🥃 Уиски – Ирландско": [
-        { name: "Блек Буш", desc: "50 мл", price: 4.30 },
-        { name: "Джеймисън", desc: "50 мл", price: 3.20 },
-        { name: "Бушмилс", desc: "50 мл", price: 3.00 },
-        { name: "Тюламор Дю", desc: "50 мл", price: 3.20 }
-      ],
-      "🥃 Уиски – Тенеси": [
-        { name: "Джак Даниелс", desc: "50 мл", price: 3.50 },
-        { name: "Джентълмен Джак", desc: "50 мл", price: 4.50 }
-      ],
-      "🥃 Бърбън": [
-        { name: "Джим Бийм", desc: "50 мл", price: 2.80 }
-      ],
-      "🍸 Водка": [
-        { name: "Белуга", desc: "50 мл", price: 7.30 },
-        { name: "Грей Гус", desc: "50 мл", price: 7.30 },
-        { name: "Абсолют", desc: "50 мл", price: 2.40 },
-        { name: "Савой Клуб", desc: "50 мл", price: 2.00 },
-        { name: "Руски Стандарт", desc: "50 мл", price: 3.00 }
-      ],
-      "🍸 Джин": [
-        { name: "Бифитър Пинк", desc: "50 мл", price: 2.40 },
-        { name: "Бифитър Класик", desc: "50 мл", price: 2.40 },
-        { name: "Гордънс Класик", desc: "50 мл", price: 2.40 },
-        { name: "Гордънс Пинк", desc: "50 мл", price: 2.40 }
-      ],
-      "🍇 Ракия": [
-        { name: "Бургас 63", desc: "50 мл", price: 2.40 },
-        { name: "Бургас Барел 63", desc: "50 мл", price: 2.90 },
-        { name: "Бургаска Мускатова", desc: "50 мл", price: 2.50 },
-        { name: "Троянска Сливова 3г.", desc: "50 мл", price: 2.20 },
-        { name: "Лозова Тиквеш Жълта", desc: "50 мл", price: 2.20 },
-        { name: "Сръбска Дюлева", desc: "50 мл", price: 2.60 },
-        { name: "Жестока Земунска", desc: "50 мл", price: 2.60 },
-        { name: "Братя Минкови", desc: "50 мл", price: 2.40 }
-      ],
-      "🍶 Узо": [
-        { name: "Пломари Узо", desc: "50 мл", price: 2.10 },
-        { name: "Пломари Узо", desc: "200 мл", price: 6.80 },
-        { name: "Барбаяни Зелен Етикет", desc: "200 мл", price: 7.80 },
-        { name: "Номер 12", desc: "50 мл", price: 2.10 },
-        { name: "Матарали", desc: "50 мл", price: 2.60 },
-        { name: "Матарали", desc: "200 мл", price: 8.80 }
-      ],
-      "🌵 Текила": [
-        { name: "Хосе Куерво Златна", desc: "25 мл", price: 2.60 },
-        { name: "Хосе Куерво Силвър", desc: "25 мл", price: 2.60 }
-      ],
-      "🍹 Ликьор": [
-        { name: "Бейлис Ликьор", desc: "50 мл", price: 2.40 },
-        { name: "Лимончело Капри", desc: "50 мл", price: 1.80 },
-        { name: "Аперол Шприц", desc: "300 мл", price: 5.20 }
-      ],
-      "🍾 Ром": [
-        { name: "Бакарди Бял", desc: "50 мл", price: 2.10 }
-      ]
+  "Салати": [
+    {
+      name: "О’ЧИ ГАРДЪН",
+      desc: "Розови домати и краставици, краве сирене, гриловани маслини, червен и пресен лук, босилеково песто и зехтин екстра върджин. • 300 г",
+      price: 7.99
+    },
+    {
+      name: "ЦЕЗАР С ХРУПКАВО ПИЛЕ",
+      desc: "Свеж букет от листни салати с Цезар дресинг, хрупкаво пиле и фино настъргано Parmigiano Reggiano. • 320 г",
+      price: 7.89
+    },
+    {
+      name: "ГРЪЦКА САЛАТА С ТИРО",
+      desc: "Хрупкаво пиле, розови домати и свежи краставици, тирокафтери, маслини и пресен пипер, с ароматен риган, магданоз и зехтин екстра върджин. • 380 г",
+      price: 6.99
+    },
+    {
+      name: "БАЛКАНСКИ ВКУС",
+      desc: "Печен червен пипер и сочни розови домати, допълнени с краве сирене и ароматно магданозено песто за свеж и наситен вкус. • 330 г",
+      price: 7.29
+    },
+    {
+      name: "САЛАТА МАРЕ",
+      desc: "Микс зелени салати, бяла риба, розови домати, печен пипер, краве сирене, крутони и настъргано яйце, с медено-горчичен дресинг. • 360 г",
+      price: 7.89
     }
-  }
+  ],
+
+
+  "Стартери": [
+    {
+      name: "КРЕХКИ ПИЛЕШКИ ПУКАНКИ",
+      desc: "Крехки пилешки хапки в златиста панко панировка, с пармезан и домашен млечен сос. • 250 г",
+      price: 7.49
+    },
+    {
+      name: "КАРТОФКИ АЛПИНА",
+      desc: "Домашни пържени картофки, овкусени с пармезан, чесън и ароматни билки. • 250 г",
+      price: 4.49
+    },
+    {
+      name: "СКАРИДИ КРИСПИ",
+      desc: "Кралски скариди в златиста панко панировка, поднесени с нежен сос „Хиляда острова“. • 200 г",
+      price: 10.99
+    },
+    {
+      name: "ТЕЛЕШКИ ЕЗИК",
+      desc: "Бавно сварен телешки език, сотиран в ароматно чесново масло, с фин пармезан и пресен магданоз. • 200 г",
+      price: 9.49
+    },
+    {
+      name: "CHEESE & BERRIES",
+      desc: "Златисти хапки от топено сирене с нежна текстура, поднесени с ароматно боровинково сладко за перфектен баланс между сладко и солено. • 250 г",
+      price: 5.49
+    },
+    {
+      name: "СЪРЦА АЛ ДЖОЙО",
+      desc: "Сотирани пилешки сърчица в ароматно чесново масло, завършени с лимон за свеж финал. • 200 г",
+      price: 7.99
+    },
+    {
+      name: "ПРЕМИУМ СЕЛЕКЦИЯ",
+      desc: "Трио от тарама хайвер, печени чушки с краве сирене и краве сирене с печени орехи и мед, поднесени с топло гръцко хлебче. • 350 г",
+      price: 7.99
+    },
+    {
+      name: "ДОМАШНИ БРУСКЕТИ",
+      desc: "Хрупкави брускети с „Филаделфия“, в два варианта – с чери домати, домашно песто и бейби моцарела или с фино прошуто крудо. • 200 г",
+      price: 6.49
+    }
+  ],
+
+
+  "Основни": [
+    {
+      name: "МЕДАЛЬОНИ АРТЕ",
+      desc: "Медальони от свинско бон филе, запечени до златисто, с ароматен сос „Братен джус“ и сотирани картофки с билки. • 380 г",
+      price: 10.99
+    },
+    {
+      name: "ПИЛЕШКИ ШНИЦЕЛ МОНТЕ",
+      desc: "Златист пилешки шницел върху кадифено картофено пюре, залят с ароматен сметанов гъбен сос. • 400 г",
+      price: 9.49
+    },
+    {
+      name: "PORK & CHEDDAR",
+      desc: "Бавно печено дърпано свинско с разтопен чедър, кремообразно картофено пюре, домашен колсло и пресен лук. • 400 г",
+      price: 9.99
+    },
+    {
+      name: "ПИТА БАЛКАНИКА",
+      desc: "Селска питка, пълнена с дърпано свинско, запечени картофи, сотирани гъби, лук и разтопена моцарела, завършена с яйце на очи. • 420 г",
+      price: 9.29
+    },
+    {
+      name: "КИНОА ТРЮФЕЛ",
+      desc: "Златисти кюфтенца от киноа върху нежно картофено пюре, завършени с ароматна трюфел майонеза. • 320 г",
+      price: 8.49
+    },
+    {
+      name: "БЯЛА РИБА КРИСПИ",
+      desc: "Филе от бяла риба в златиста хрупкава панировка, с домашен колсло, пържени картофки, лимоново маслен сос и свеж лимон. • 380 г",
+      price: 9.49
+    }
+  ],
+
+
+  "Паста": [
+    {
+      name: "СПАГЕТИ КАРБОНАРА",
+      desc: "Прясна паста, панчета, жълтък, пармиджано. • 300 г",
+      price: 7.49
+    },
+    {
+      name: "СПАГЕТИ БОЛОНЕЗЕ",
+      desc: "Прясна паста, лук, моркови, мляно месо, доматен сос и пармиджано. • 350 г",
+      price: 7.49
+    }
+  ],
+
+
+  "Бургери": [
+    {
+      name: "ПИЛЕШКИ ЧИЙЗБУРГЕР",
+      desc: "Питка бриош, бургер сос, чедър, домат, зелена салата и пържени картофки. • 400 г",
+      price: 7.99
+    },
+    {
+      name: "ТЕЛЕШКИ ЧИЙЗБУРГЕР",
+      desc: "Питка бриош, BBQ сос, яйце, чътни от краставичка, карамелизиран лук, чедър и домашни пържени картофки. • 380 г",
+      price: 8.99
+    },
+    {
+      name: "БУРГЕР С ДЪРПАНО СВИНСКО",
+      desc: "Питка бриош, BBQ сос, чедър, карамелизиран лук, зелена салата и домашни пържени картофки. • 400 г",
+      price: 8.49
+    }
+  ],
+
+
+  "ВВО/ГРИЛ": [
+    {
+      name: "ГРИЛ СЕЛЕКЦИЯ",
+      desc: "Пилешко филе, свинска вратна пържола, свинско бон филе, 3 кюфтета и 3 кебапчета, печени печурки и пържени картофки, поднесени с домашна лютеница. • 1.500 кг",
+      price: 24.99
+    },
+    {
+      name: "БАЛКАНСКО ТРИО",
+      desc: "Избор от 3 кюфтета или 3 кебапчета, поднесени с микс зелени салати, домашна лютеница и пържени картофки. • 550 г",
+      price: 6.99
+    },
+    {
+      name: "ТЕЛЕШКИ ГРИЛ",
+      desc: "Три телешки кюфтенца, залети със сос „Братен джус“, поднесени с хрупкави картофки с ароматни подправки и домашна лютеница. • 550 г",
+      price: 9.49
+    },
+    {
+      name: "ПИЛЕШКО ФИЛЕ",
+      desc: "• 250 г",
+      price: 4.99
+    },
+    {
+      name: "ЛАВРАК НА ГРИЛ",
+      desc: "• 350 г",
+      price: 7.99
+    },
+    {
+      name: "ЦИПУРА НА ГРИЛ",
+      desc: "• 400 г",
+      price: 7.49
+    },
+    {
+      name: "СВИНСКА ВРАТНА ПЪРЖОЛА",
+      desc: "• 250 г",
+      price: 5.99
+    }
+  ],
+
+
+  "Домашни хлебчета": [
+    {
+      name: "СЕЛСКА ПИТКА",
+      desc: "• 180 г",
+      price: 1.70
+    },
+    {
+      name: "ЧАБАТА С ПОДПРАВКИ",
+      desc: "• 150 г",
+      price: 1.70
+    },
+    {
+      name: "ЧАБАТА С ЧЕСЪН",
+      desc: "• 150 г",
+      price: 1.70
+    }
+  ],
+
+
+  "Десерти": [
+    {
+      name: "ТОРТА БИСКОТИНО",
+      desc: "• 200 г",
+      price: 4.29
+    },
+    {
+      name: "ШОКОЛАДОВО СУФЛЕ",
+      desc: "Поднесено с топка ванилов сладолед. • 180 г",
+      price: 3.99
+    },
+    {
+      name: "ТОРТА „ЛОТУС“ В ЧАША",
+      desc: "• 180 г",
+      price: 4.49
+    },
+    {
+      name: "ДРУГ ДЕСЕРТ – ПОПИТАЙ СЕРВИТЬОРА",
+      desc: "",
+      price: null
+    }
+  ]
+
 };
+
 
 /* =========================
    HELPERS
 ========================= */
+
 function formatPrices(eur) {
-  if (eur === null || eur === undefined) return `<span class="price">Цена: по запитване</span>`;
-  const lv = (eur * RATE).toFixed(2);
-  return `<span class="price">${eur.toFixed(2)} € / ${lv} лв</span>`;
+
+  if (eur === null || eur === undefined) {
+    return `<span class="price">Цена: по запитване</span>`;
+  }
+
+  return `<span class="price">${eur.toFixed(2)} €</span>`;
 }
 
+
 function escapeHtml(s) {
+
   return (s || "").replace(/[&<>"']/g, c => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
   }[c]));
+
 }
+
 
 /* =========================
    MENU RENDER
 ========================= */
+
 function renderMenu(sectionName, contentEl) {
+
   contentEl.innerHTML = "";
 
-  const section = menuData[sectionName];
-  if (!section) return;
+  const items = menuData[sectionName];
+
+  if (!items) return;
 
   const wrap = document.createElement("div");
   wrap.className = "menu-acc-wrap";
 
-  const cats = Object.keys(section);
+  const details = document.createElement("details");
+  details.className = "menu-acc";
+  details.open = true;
 
-  cats.forEach((catName) => {
-    const value = section[catName];
+  const summary = document.createElement("summary");
+  summary.className = "menu-acc-head";
 
-    const details = document.createElement("details");
-    details.className = "menu-acc";
+  summary.innerHTML = `
+    <span class="menu-acc-title">
+      ${escapeHtml(sectionName)}
+    </span>
+    <span class="menu-acc-chevron">▾</span>
+  `;
 
-    const summary = document.createElement("summary");
-    summary.className = "menu-acc-head";
-    summary.innerHTML = `
-      <span class="menu-acc-title">${escapeHtml(catName)}</span>
-      <span class="menu-acc-chevron">▾</span>
+  const body = document.createElement("div");
+  body.className = "menu-acc-body";
+
+  items.forEach((item) => {
+
+    const desc = item.desc
+      ? `<div class="desc">${escapeHtml(item.desc)}</div>`
+      : "";
+
+    body.innerHTML += `
+      <div class="menu-item">
+
+        <div class="row">
+
+          <b class="name">
+            ${escapeHtml(item.name)}
+          </b>
+
+          ${formatPrices(item.price)}
+
+        </div>
+
+        ${desc}
+
+      </div>
     `;
 
-    const body = document.createElement("div");
-    body.className = "menu-acc-body";
-
-    // масив -> items
-    if (Array.isArray(value)) {
-      value.forEach((i) => {
-        const desc = i.desc ? `<div class="desc">${escapeHtml(i.desc)}</div>` : "";
-        body.innerHTML += `
-          <div class="menu-item">
-            <div class="row">
-              <b class="name">${escapeHtml(i.name)}</b>
-              ${formatPrices(i.price)}
-            </div>
-            ${desc}
-          </div>
-        `;
-      });
-    }
-    // обект -> подкатегории
-    else if (value && typeof value === "object") {
-      Object.keys(value).forEach((subName) => {
-        body.innerHTML += `<h4 class="menu-subcat-title">${escapeHtml(subName)}</h4>`;
-
-        (value[subName] || []).forEach((i) => {
-          const desc = i.desc ? `<div class="desc">${escapeHtml(i.desc)}</div>` : "";
-          body.innerHTML += `
-            <div class="menu-item">
-              <div class="row">
-                <b class="name">${escapeHtml(i.name)}</b>
-                ${formatPrices(i.price)}
-              </div>
-              ${desc}
-            </div>
-          `;
-        });
-      });
-    }
-
-    details.appendChild(summary);
-    details.appendChild(body);
-    wrap.appendChild(details);
-
-    // ✅ ВАЖНО: ползваме "toggle" (а не click+preventDefault)
-    // така работи стабилно след всеки нов render (Основно/Пици/Напитки)
-    details.addEventListener("toggle", () => {
-      if (!details.open) return;
-      wrap.querySelectorAll("details.menu-acc").forEach((d) => {
-        if (d !== details) d.open = false;
-      });
-    });
   });
 
+  details.appendChild(summary);
+  details.appendChild(body);
+
+  wrap.appendChild(details);
   contentEl.appendChild(wrap);
 }
 
-function setActiveTab(btn) {
-  document.querySelectorAll("#tabs button").forEach(x => x.classList.remove("active"));
-  btn.classList.add("active");
-}
 
 /* =========================
-   INIT MENU (FIXED)
+   ACTIVE TAB
 ========================= */
+
+function setActiveTab(btn) {
+
+  document
+    .querySelectorAll("#tabs button")
+    .forEach(x => x.classList.remove("active"));
+
+  if (btn) {
+    btn.classList.add("active");
+  }
+
+}
+
+
+/* =========================
+   INIT MENU
+========================= */
+
 function initMenu() {
+
   const tabs = document.getElementById("tabs");
   const mobile = document.getElementById("mobileCategory");
   const content = document.getElementById("menuContent");
 
   if (!tabs || !mobile || !content) {
-    console.error("Missing menu elements:", { tabs, mobile, content });
+
+    console.error("Missing menu elements:", {
+      tabs,
+      mobile,
+      content
+    });
+
     return;
   }
 
@@ -295,38 +365,103 @@ function initMenu() {
 
   const sections = Object.keys(menuData);
 
-  sections.forEach((sec, idx) => {
-    const b = document.createElement("button");
-    b.type = "button";
-    b.textContent = sec;
-    if (idx === 0) b.classList.add("active");
-    b.addEventListener("click", () => {
-      setActiveTab(b);
-      renderMenu(sec, content);
-      mobile.value = sec;
-    });
-    tabs.appendChild(b);
 
-    const o = document.createElement("option");
-    o.value = sec;
-    o.textContent = sec;
-    mobile.appendChild(o);
+  /* =========================
+     DESKTOP TABS
+  ========================= */
+
+  sections.forEach((sectionName, idx) => {
+
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.textContent = sectionName;
+
+    if (idx === 0) {
+      button.classList.add("active");
+    }
+
+    button.addEventListener("click", () => {
+
+      setActiveTab(button);
+
+      renderMenu(
+        sectionName,
+        content
+      );
+
+      mobile.value = sectionName;
+
+    });
+
+    tabs.appendChild(button);
+
+
+    /* =========================
+       MOBILE SELECT
+    ========================= */
+
+    const option = document.createElement("option");
+
+    option.value = sectionName;
+    option.textContent = sectionName;
+
+    mobile.appendChild(option);
+
   });
+
+
+  /* =========================
+     MOBILE CHANGE
+  ========================= */
 
   mobile.addEventListener("change", (e) => {
-    renderMenu(e.target.value, content);
+
+    const sectionName = e.target.value;
+
+    renderMenu(
+      sectionName,
+      content
+    );
+
+    document
+      .querySelectorAll("#tabs button")
+      .forEach(button => {
+
+        button.classList.toggle(
+          "active",
+          button.textContent === sectionName
+        );
+
+      });
+
   });
 
+
+  /* =========================
+     FIRST CATEGORY
+  ========================= */
+
   if (sections.length) {
+
     mobile.value = sections[0];
-    renderMenu(sections[0], content);
+
+    renderMenu(
+      sections[0],
+      content
+    );
+
   }
+
 }
 
+
 /* =========================
-   MENU SEARCH 🔍 (ADDED)
+   MENU SEARCH
 ========================= */
+
 function initMenuSearch() {
+
   const input = document.getElementById("menuSearch");
   const content = document.getElementById("menuContent");
   const tabs = document.getElementById("tabs");
@@ -334,95 +469,179 @@ function initMenuSearch() {
 
   if (!input || !content) return;
 
-  const normalize = (s) =>
-    (s || "")
+
+  const normalize = (s) => {
+
+    return (s || "")
       .toString()
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .trim();
 
-  const allItems = [];
-  Object.entries(menuData).forEach(([sectionName, section]) => {
-    Object.entries(section).forEach(([catName, value]) => {
-      if (Array.isArray(value)) {
-        value.forEach((i) => allItems.push({ sectionName, catName, subName: null, item: i }));
-      } else if (value && typeof value === "object") {
-        Object.entries(value).forEach(([subName, arr]) => {
-          (arr || []).forEach((i) => allItems.push({ sectionName, catName, subName, item: i }));
-        });
-      }
-    });
-  });
+  };
 
-  function getCurrentSection() {
-    const activeTab = tabs && tabs.querySelector("button.active") ? tabs.querySelector("button.active").textContent : null;
-    return (mobile && mobile.value) || activeTab || Object.keys(menuData)[0];
-  }
+
+  const allItems = [];
+
+  Object.entries(menuData).forEach(
+    ([sectionName, items]) => {
+
+      items.forEach((item) => {
+
+        allItems.push({
+          sectionName,
+          item
+        });
+
+      });
+
+    }
+  );
+
 
   function renderSearchResults(q) {
+
     const query = normalize(q);
 
+
     if (!query) {
-      renderMenu(getCurrentSection(), content);
+
+      const currentSection =
+        mobile?.value ||
+        Object.keys(menuData)[0];
+
+      renderMenu(
+        currentSection,
+        content
+      );
+
       return;
     }
 
-    const hits = allItems.filter(({ item }) => {
-      const hay = normalize(item.name + " " + (item.desc || ""));
-      return hay.includes(query);
-    });
+
+    const hits = allItems.filter(
+      ({ item }) => {
+
+        const hay = normalize(
+          item.name + " " + (item.desc || "")
+        );
+
+        return hay.includes(query);
+
+      }
+    );
+
 
     content.innerHTML = "";
 
+
     if (!hits.length) {
-      content.innerHTML = `<div class="menu-item"><b class="name">Няма резултати за “${escapeHtml(q)}”.</b></div>`;
+
+      content.innerHTML = `
+        <div class="menu-item">
+
+          <b class="name">
+            Няма резултати за
+            „${escapeHtml(q)}“.
+          </b>
+
+        </div>
+      `;
+
       return;
     }
 
-    const grouped = {};
-    hits.forEach((h) => {
-      if (!grouped[h.sectionName]) grouped[h.sectionName] = [];
-      grouped[h.sectionName].push(h);
-    });
 
-    Object.keys(grouped).forEach((sectionName) => {
-      content.innerHTML += `<h3 class="menu-cat-title">${escapeHtml(sectionName)} – резултати</h3>`;
+    hits.forEach(
+      ({ sectionName, item }) => {
 
-      grouped[sectionName].forEach(({ catName, subName, item }) => {
-        const where = subName ? `${catName} / ${subName}` : `${catName}`;
-        const desc = item.desc ? `<div class="desc">${escapeHtml(item.desc)}</div>` : "";
+        const desc = item.desc
+          ? `<div class="desc">${escapeHtml(item.desc)}</div>`
+          : "";
 
         content.innerHTML += `
+
           <div class="menu-item">
+
             <div class="row">
-              <b class="name">${escapeHtml(item.name)}</b>
+
+              <b class="name">
+                ${escapeHtml(item.name)}
+              </b>
+
               ${formatPrices(item.price)}
+
             </div>
-            <div class="desc">${escapeHtml(where)}</div>
+
             ${desc}
+
+            <div class="desc">
+              Категория: ${escapeHtml(sectionName)}
+            </div>
+
           </div>
+
         `;
-      });
-    });
+
+      }
+    );
+
   }
 
+
   let t = null;
+
   input.addEventListener("input", (e) => {
+
     clearTimeout(t);
-    t = setTimeout(() => renderSearchResults(e.target.value), 120);
+
+    t = setTimeout(() => {
+
+      renderSearchResults(
+        e.target.value
+      );
+
+    }, 120);
+
   });
 
+
   const resetSearch = () => {
+
     if (!input.value) return;
+
     input.value = "";
-    renderMenu(getCurrentSection(), content);
+
+    const currentSection =
+      mobile?.value ||
+      Object.keys(menuData)[0];
+
+    renderMenu(
+      currentSection,
+      content
+    );
+
   };
 
-  if (tabs) tabs.addEventListener("click", resetSearch);
-  if (mobile) mobile.addEventListener("change", resetSearch);
 
-  console.log("✅ menuSearch ready");
+  if (tabs) {
+    tabs.addEventListener(
+      "click",
+      resetSearch
+    );
+  }
+
+  if (mobile) {
+    mobile.addEventListener(
+      "change",
+      resetSearch
+    );
+  }
+
+
+  console.log("✅ Новото меню е заредено");
+
 }
 
 /* =========================
